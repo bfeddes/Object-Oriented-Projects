@@ -10,7 +10,7 @@ public class App {
         // Can only purchase packages in groups of 8.
         System.out.println("Working on the assignment. Last worked on 9/12 1:50 PM");
 
-        // Calculating the areas of the 3 rectangles and 1 right triangle:
+        // Calculating the areas of the 3 rectangles and 1 right triangle
 
         int areaOfRectangle1 = (8*15);
         int areaOfRectangle2 = (7*9);
