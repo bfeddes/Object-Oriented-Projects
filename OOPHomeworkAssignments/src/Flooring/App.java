@@ -25,7 +25,7 @@ public class App {
         // Note: Each package comes with 8 boards. Each board is 2 feet long, 0.5 feet wide.
         double boardDimensions = 1; // Each board will take up 1 square foot, as l * w of a board is 2 * 0.5.
         double packageSize = (boardDimensions*8); //The total amount of area one package can cover.
-        // Calculating the number of packages that will be needed to cover the floor. + the 25% extra.
+        // Calculating the number of packages that will be needed to cover the floor. Includes the 25% extra.
         double numOfPackages = ((areaOfRoom/packageSize)*1.25);
         // Rounding the amount of packages up.
         double roundNumOfPackages = (numOfPackages + 1);
