@@ -3,7 +3,7 @@ import java.util.Random;
 public class CircleCalc {
 
 	public static void main(String[] args) {
-		//Brian Feddes CPSCP 24500 CircleCalc assignment
+		//Brian Feddes CPSC 24500 CircleCalc assignment
 		
 		// Creates a random number between 0 and 50.
 		Random radius = new Random();
