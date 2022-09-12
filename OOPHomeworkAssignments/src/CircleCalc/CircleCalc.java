@@ -3,6 +3,7 @@ import java.util.Random;
 public class CircleCalc {
 
 	public static void main(String[] args) {
+		//Brian Feddes CPSCP 24500 CircleCalc assignment
 		
 		// Creates a random number between 0 and 50.
 		Random radius = new Random();
@@ -11,7 +12,7 @@ public class CircleCalc {
 		// Selects a random radius from 0-50.
 		System.out.println("The randomly selected radius was " + radiusOfCircle);
 		
-		// Calculating Circumference of the circle .
+		// Calculating Circumference of the circle 
 		double circumferenceOfCircle = (2*Math.PI*radiusOfCircle);
 		System.out.println("The circumference of a circle with radius " + radiusOfCircle + " is " + circumferenceOfCircle);
 		
