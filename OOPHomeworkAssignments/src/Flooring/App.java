@@ -34,7 +34,7 @@ public class App {
         // Calculating the total price of the packages. Price per package = $24.99
         double priceOfPackages = (roundNumOfPackages * 24.99);
         // MAKE THIS ROUNDED TO 2 DECIMAL POINTS
-        System.out.println("The total price for " + (int)roundNumOfPackages + " packages is $" + priceOfPackages);
+        System.out.printf("The total price for %.0f packages is $%.2f.",roundNumOfPackages, priceOfPackages);
 
 
 
