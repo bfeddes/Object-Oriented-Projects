@@ -2,6 +2,7 @@ package Flooring;
 
 public class App {
     public static void main(String[] args) {
+        // Brian Feddes Flooring Assignment CPSC 25000
 
         // Calculating the areas of the 3 rectangles and 1 right triangle
 
