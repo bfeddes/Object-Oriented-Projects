@@ -18,14 +18,14 @@ public class CellPhoneOrderingSystem {
         // Initializing scanner class
         Scanner sc = new Scanner(System.in);
         // Initializing and declaring variables outside of loops
-        String phoneType = "";
+        String phoneType, storageName;
+        String addOn = "";
+        String screenSizeString = "";
         int iphoneCost = 849;            
         int androidCost = 799;
         double totalCost = 0;
         // Asking the user how many phones they want to purchase
         // Asking the user what type of phone they want
-        for (int i = 1; i <=numOfPhones; i++){
-        System.out.printf("Lets configure phone #%d\n",i);
         System.out.print("Enter A for Android or I for iPhone: ");
         phoneType = sc.next();
         // Options for an iPhone
@@ -33,16 +33,19 @@ public class CellPhoneOrderingSystem {
         totalCost += iphoneCost;
         phoneType = "IPhone";
         } else if (phoneType.equalsIgnoreCase("A")){
-                totalCost += androidCost;
-            phoneType = "Android";
+        totalCost += androidCost;
+        phoneType = "Android";
         }
         // Asking the screen size
         System.out.print("What screen size? Enter 1 for 5.6\", 2 for 6.2\", or 3 for 6.7\": ");
         int screenSize = sc.nextInt();
         if (screenSize == 1){
+            screenSizeString = "5.6\"";
         } else if (screenSize == 2){
             totalCost *= 1.2;
+            screenSizeString = "6.2\"";
         } else if (screenSize == 3){
+            screenSizeString = "6.7\"";
             totalCost *= 1.4;
         }
         // Asking the storage
@@ -60,12 +63,16 @@ public class CellPhoneOrderingSystem {
         String addOnChoice = sc.next();
         if(addOnChoice.equalsIgnoreCase("C")){
             totalCost += 49;
+            addOn = "case";
         }else if(addOnChoice.equalsIgnoreCase("S")){
             totalCost += 15;
+            addOn = "Screen Protector";
         }else if(addOnChoice.equalsIgnoreCase("E")){
             totalCost += 99;
+            addOn = "Ear buds";
         }else if(addOnChoice.equalsIgnoreCase("W")){
             totalCost += 59;
+            addOn = "Wireless Charger";
         }
         // While loop for add-ons while the user doesn't select finish
         while (!addOnChoice.equalsIgnoreCase("F")){
@@ -82,7 +89,7 @@ public class CellPhoneOrderingSystem {
             totalCost += 59;
         }
         }
-     }
+    System.out.printf("%s %s %dGB / %s /",phoneType,screenSizeString,storage,addOn);
      return totalCost;
 }
     // Method to print out the header
@@ -102,7 +109,11 @@ public class CellPhoneOrderingSystem {
         System.out.print("How many phones will you purchase? ");
         int numOfPhones = sc.nextInt();
         System.out.println();
+        for (int i=1;i<=numOfPhones;i++){
+        System.out.printf("Lets configure phone #%d\n",i);
         phoneCalculator(numOfPhones);
+        
+        }
          System.out.println("\nHere is a summary of your order:");
     }  
 }
