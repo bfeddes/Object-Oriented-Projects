@@ -69,6 +69,7 @@ public class posSystem {
         System.out.printf("Total          $  %.2f\n", total);
         System.out.println();
         return bev;
+
     }
     public static void main(String args[]){
     // Initalizing the Scanner class
