@@ -104,6 +104,8 @@ public class CellPhoneOrderingSystem {
             addOns = " / wireless charger";
         }
         } while(!addOnChoice.equalsIgnoreCase("F"));
+
+        // Storing the results
         orderString = orderString + String.format("%s %s %dGB%s ($%.2f) \n",phoneType, screenDimensions, storageAmount, allAddOns, phoneCost);
         finalTotal = finalTotal + phoneCost;
       }
