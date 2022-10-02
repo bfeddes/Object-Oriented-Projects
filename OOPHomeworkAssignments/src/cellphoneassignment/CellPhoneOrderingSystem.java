@@ -4,16 +4,10 @@
  * Professor Klump
  * Fall 2022 Semester
  */
-
 package cellphoneassignment;
 import java.util.Scanner;
 public class CellPhoneOrderingSystem {
-    /*****TO DO LIST*****
-     * Create method for asking what amount of storage (64 GB 128 GB 256 GB)
-     * 
-     */
-
-    // Type of phone method
+    // ***Type of phone method***
     public static double phoneCalculator(int numOfPhones){
         // Initializing scanner class
         Scanner sc = new Scanner(System.in);
@@ -35,27 +29,6 @@ public class CellPhoneOrderingSystem {
         } else if (phoneType.equalsIgnoreCase("A")){
         totalCost += androidCost;
         phoneType = "Android";
-        }
-        // Asking the screen size
-        System.out.print("What screen size? Enter 1 for 5.6\", 2 for 6.2\", or 3 for 6.7\": ");
-        int screenSize = sc.nextInt();
-        if (screenSize == 1){
-            screenSizeString = "5.6\"";
-        } else if (screenSize == 2){
-            totalCost *= 1.2;
-            screenSizeString = "6.2\"";
-        } else if (screenSize == 3){
-            screenSizeString = "6.7\"";
-            totalCost *= 1.4;
-        }
-        // Asking the storage
-        System.out.print("How much storage? Enter 64, 128, 256: ");
-        int storage = sc.nextInt();
-        if (storage == 64){
-        } else if (storage == 128){
-            totalCost += 100;
-        } else if (storage == 256){
-            totalCost += 250;
         }
         // Asking the user what add-ons they want
         System.out.println("What add-on do you want?");
@@ -89,8 +62,22 @@ public class CellPhoneOrderingSystem {
             totalCost += 59;
         }
         }
-    System.out.printf("%s %s %dGB / %s /",phoneType,screenSizeString,storage,addOn);
-     return totalCost;
+        return numOfPhones;
+}
+public static int screenSizes(){
+    // Asking the screen size
+    Scanner sc = new Scanner(System.in);
+    String screenSizeString = "";
+    System.out.print("What screen size? Enter 1 for 5.6\", 2 for 6.2\", or 3 for 6.7\": ");
+    int screenSize = sc.nextInt();
+    return screenSize;
+}
+public static int storageAmount(){
+    // Asking the storage
+    Scanner sc = new Scanner(System.in);
+    System.out.print("How much storage? Enter 64, 128, 256: ");
+    int storage = sc.nextInt();
+    return storage;
 }
     // Method to print out the header
     public static void header(){
@@ -112,7 +99,6 @@ public class CellPhoneOrderingSystem {
         for (int i=1;i<=numOfPhones;i++){
         System.out.printf("Lets configure phone #%d\n",i);
         phoneCalculator(numOfPhones);
-        
         }
          System.out.println("\nHere is a summary of your order:");
     }  
