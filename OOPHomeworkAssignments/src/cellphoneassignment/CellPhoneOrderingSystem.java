@@ -12,7 +12,7 @@ import java.util.Scanner;
       System.out.println("****************************************************");
       System.out.println("        CORPORATE CELL PHONE ORDERING SYSTEM");
       System.out.println("****************************************************\n");
-      System.out.println("Welcome to the coorproate cell phone ordering system.");
+      System.out.println("Welcome to the corproate cell phone ordering system.");
       System.out.println("Here you can order multiple phones of different kinds");
       System.out.println("with various add-ons for your employees.\n");
       }
@@ -52,10 +52,10 @@ import java.util.Scanner;
       String addOns = "";
 
       // Configuration number
-      System.out.printf("\nLets configure phone #%d\n",i);
+      System.out.printf("\nLet's configure phone #%d ...\n",i);
 
       // Asking user for what brand of phone
-      System.out.print("Enter A for Android or I for iPhone: ");
+      System.out.print("Enter A for Android or I for IPhone: ");
       phoneType = sc.next();
       if (phoneType.equalsIgnoreCase("I")){
       phoneCost = phoneCost + iphoneCost;
@@ -93,11 +93,11 @@ import java.util.Scanner;
       do {
       allAddOns = allAddOns + addOns;
       System.out.println("What add-on do you want?");
-      System.out.println("   [C]ase ($49)");
-      System.out.println("   [S]creen protector ($15)");
-      System.out.println("   [E]ar buds ($99)");
-      System.out.println("   [W]ireless charger ($59)");
-      System.out.println("   [F]inish order");
+      System.out.println("  [C]ase ($49)");
+      System.out.println("  [S]creen protector ($15)");
+      System.out.println("  [E]ar buds ($99)");
+      System.out.println("  [W]ireless charger ($59)");
+      System.out.println("  [F]inish order");
       System.out.print("Enter the letter of your choice: ");
       addOnChoice = sc.next();
       if (addOnChoice.equalsIgnoreCase("C")){
@@ -120,7 +120,7 @@ import java.util.Scanner;
       finalTotal = finalTotal + phoneCost;
       }
 
-      // Calling the summary method
+      // Calling the summary method to print the full order
       summary(orderString, finalTotal);
     }
   }
