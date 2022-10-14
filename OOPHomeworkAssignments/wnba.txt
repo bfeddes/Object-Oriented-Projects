@@ -11,5 +11,5 @@ Las Vegas Aces	26	10
 Seattle Storm	22	14
 Dallas Wings	18	18
 Phoenix Mercury	15	21
-Minnesota Lynx	14	22
+Minnesota Lynx	14  22
 Los Angeles Sparks  13  23
