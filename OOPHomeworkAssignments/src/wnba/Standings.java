@@ -28,7 +28,7 @@ public class Standings {
         Scanner sc = new Scanner(System.in);
         // Calling header method to print out the header
         header();
-        // Initializing Scanner object for user input
+        // Asking the user to inser the correct file.
         System.out.print("Enter the standings filename: ");
         String fileName = sc.nextLine();
 
@@ -41,6 +41,7 @@ public class Standings {
         String[] parts;
         int userChoice;
         double wins, losses, winningPct, gamesBack;
+        boolean proceed = false;
         try{
             Scanner fsc = new Scanner(new File(fileName));
             while (fsc.hasNextLine()){
@@ -56,18 +57,24 @@ public class Standings {
                     // **Add function to add the total combined list and arrange them in order**
                 }
             }
+            // The boolean I set earlier will turn to true, which will enable the user to now select teams.
+            proceed = true;
+            fsc.close();
             // Printing out that the teams have been read if everything functions properly
             System.out.println("The teams have been read.");
         } catch(Exception e){
             // Informing the user the file they input is invalid.
             System.out.println("Invalid file name.");
         }
-        do{
+        // This part of the program will only run IF the file is valid. Otherwise the program will end immediately if the file is invalid.
+        if (proceed == true) {
+            do{
             // Add exception handling to handle if the numbers are input as a string like "one"
             // Add the functional aspects for printing the standings information for each conference.
             userChoice = userMenu(sc);
             if(userChoice == 1){
                 // Display Eastern Conference standings
+
             } else if (userChoice == 2){
                 // Display Western Conference standings
             } else if (userChoice == 3){
@@ -76,5 +83,7 @@ public class Standings {
                 System.out.println("\nInvalid input\n");
             }
         } while (userChoice != 4);
+    }
+
     }
 }
