@@ -1,3 +1,9 @@
+/*Brian Feddes
+ * WNBA Programming Assignment
+ * Object Oriented Programming
+ * Professor Klump
+ * Fall 2022
+ */
 package wnba;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -74,7 +80,6 @@ public class Standings {
             userChoice = userMenu(sc);
             if(userChoice == 1){
                 // Display Eastern Conference standings
-
             } else if (userChoice == 2){
                 // Display Western Conference standings
             } else if (userChoice == 3){
