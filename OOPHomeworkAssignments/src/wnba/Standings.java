@@ -89,6 +89,6 @@ public class Standings {
             }
         } while (userChoice != 4);
     }
-
+        System.out.println("\nThank you for using this program.");
     }
 }
