@@ -9,12 +9,16 @@ public static Scanner sc = new Scanner(System.in);
         System.out.println("\t       2022 WNBA STANDINGS");
         System.out.println("***************************************************\n");
     }
-    public static void userChoices(){
-        System.out.println("1. Eastern Conference");
-        System.out.println("2. Western Conference");
-        System.out.println("3. Combined");
-        System.out.println("4. Exit");
-    }
+    public static int userChoices(Scanner sc) {
+		System.out.println("What would you like to see?");
+		System.out.println("1. Eastern Conference");
+		System.out.println("2. Western Conference");
+		System.out.println("3. Combined");
+		System.out.println("4. Exit");
+		System.out.print("Enter the number of your choice: ");
+		int userChoice = sc.nextInt();
+		return userChoice;
+	}
     /* Create header (done)
      * Offer the user options to see eastern conference standings
      * Offer the user options to see western conference standings
@@ -51,13 +55,12 @@ public static Scanner sc = new Scanner(System.in);
                     target.add(line);
                 }
             }
+            // Printing out that the teams have been read if everything functions properly
             System.out.println("The teams have been read.");
         } catch(Exception e){
+            // Informing the user the file they input is invalid.
             System.out.println("Invalid file name.");
         }
-        System.out.println("What would you like to see?");
-        userChoices();
-        System.out.print("Enter the number of your choice: ");
-        userChoice = sc.nextInt();
+        userChoices(sc);
     }
 }
