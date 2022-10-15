@@ -14,7 +14,8 @@ public class Standings {
         System.out.println("\t       2022 WNBA STANDINGS");
         System.out.println("***************************************************\n");
     }
-    public static int userMenu(Scanner sc){
+    public static int userMenu(){
+        Scanner sc = new Scanner(System.in);
         System.out.println("What would you like to see?");
         System.out.println("1. Eastern Conference");
 		System.out.println("2. Western Conference");
@@ -75,9 +76,14 @@ public class Standings {
         // This part of the program will only run IF the file is valid. Otherwise the program will end immediately if the file is invalid.
         if (proceed == true) {
             do{
-            // Add exception handling to handle if the numbers are input as a string like "one"
             // Add the functional aspects for printing the standings information for each conference.
-            userChoice = userMenu(sc);
+            try{
+            userChoice = userMenu();
+            } catch (Exception ex){
+                System.out.println("\nInvalid input\n");
+                userChoice = userMenu();
+            }
+
             if(userChoice == 1){
                 // Display Eastern Conference standings
             } else if (userChoice == 2){
