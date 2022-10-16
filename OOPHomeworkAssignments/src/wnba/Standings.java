@@ -29,6 +29,9 @@ public class Standings {
         String[] parts;
         double gamesBack;
         double winPct, gb;
+        double leadTeamWins = 0;
+        double leadTeamLosses = 0;
+        String leadTeamGB = "-";
         String teamName;
         int wins, losses;
         boolean firstPlaceTeam;
@@ -39,9 +42,19 @@ public class Standings {
             teamName = parts[0];
 			wins = (Integer.parseInt(parts[1]));
 			losses = (Integer.parseInt(parts[2]));
+            if(wins > leadTeamWins){
+            leadTeamWins = wins;
+            leadTeamLosses = losses;
+            }
             winPct = wins / (wins + (double)losses); // I had to cast losses as a double here, otherwise it would just return integer value of 0 since int / int = int.
-            System.out.printf("%-25s%3d%10d%8.3f\n",teamName,wins, losses,winPct);
+            gb = ((leadTeamWins - wins)+(losses - leadTeamLosses))/2;
+            if(gb == 0){
+                System.out.printf("%-25s%3d%10d%8.3f\t   -\n",teamName,wins, losses,winPct);
+                System.out.print("");
+            }else{
+            System.out.printf("%-25s%3d%10d%8.3f%7.1f\n",teamName,wins, losses,winPct,gb);
 			System.out.print("");
+            }
         }
     }
     /* Create header (done)
