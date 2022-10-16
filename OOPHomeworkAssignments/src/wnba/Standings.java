@@ -28,26 +28,27 @@ public class Standings {
     public static void printConference(ArrayList<String> conference){
         String[] parts;
         double gamesBack;
-        double winPct;
+        double winPct, gb;
         String teamName;
-        int wins, losses, pct, gb;
+        int wins, losses;
+        boolean firstPlaceTeam;
         // Printing out the WNBA conference, including their wins, losses, win percent, and games back.
-        System.out.println("Team name\t\tWins\tLosses\tPCT\tGB");
+        System.out.println("Team name\t\tWins\tLosses\t   PCT\t   GB");
         for(String team : conference){
             parts = team.split("\t");
             teamName = parts[0];
 			wins = (Integer.parseInt(parts[1]));
 			losses = (Integer.parseInt(parts[2]));
-            pct = wins / (wins + losses);
-            System.out.printf("%s\t\t%s\t%s\n",teamName,wins, losses);
+            winPct = wins / (wins + (double)losses); // I had to cast losses as a double here, otherwise it would just return integer value of 0 since int / int = int.
+            System.out.printf("%-25s%3d%10d%8.3f\n",teamName,wins, losses,winPct);
 			System.out.print("");
         }
     }
     /* Create header (done)
-     * Offer the user options to see eastern conference standings
-     * Offer the user options to see western conference standings
+     * Offer the user options to see eastern conference standings (done)
+     * Offer the user options to see western conference standings (done)
      * Offer the user options to see overall standings
-     * Each display of standings will show the team name, number of wins, number of losses, winning percentage, and games behind, teams sorted by winning percentage
+     * Each display of standings will show the team name, number of wins, number of losses, winning percentage,(done) and games behind(do), teams sorted by winning percentage(do)
      */
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -75,6 +76,9 @@ public class Standings {
                 parts = line.split("\t");
                 if (parts[0].equalsIgnoreCase("Conference: Eastern")){
                     target = eastern;
+                    // Skips the empty line between conferences
+                } else if (parts[0].length() == 0){
+                    continue;
                 } else if (parts[0].equalsIgnoreCase("Conference: Western")){
                     target = western;
                 }else{
