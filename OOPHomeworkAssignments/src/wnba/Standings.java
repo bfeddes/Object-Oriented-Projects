@@ -70,9 +70,9 @@ public class Standings {
         String fileName = sc.nextLine();
 
         // Variables
-        ArrayList<String> allTeams = new ArrayList<String>();
         ArrayList<String> eastern = new ArrayList<String>();
         ArrayList<String> western = new ArrayList<String>();
+        ArrayList<String> allTeams = new ArrayList<String>();
         ArrayList<String> target = null;
         String line;
         String[] parts;
@@ -93,7 +93,6 @@ public class Standings {
                     target = western;
                 }else{
                     target.add(line);
-                    // *Add function to add the total combined list and arrange them in order*
                 }
             }
             // The boolean I set earlier will turn to true, which will enable the user to now select teams.
@@ -126,7 +125,10 @@ public class Standings {
                 System.out.println();
             } else if (userChoice == 3){
                 System.out.println("\nCombined Conference Standings");
-                // Display total WNBA standings
+                allTeams.addAll(eastern);
+                allTeams.addAll(western);
+                Collections.sort(allTeams);
+                printConference(allTeams);
                 System.out.println();
             } else if (userChoice > 4 || userChoice < 1){
                 System.out.println("\nInvalid input\n");
