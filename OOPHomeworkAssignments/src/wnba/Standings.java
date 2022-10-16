@@ -79,7 +79,7 @@ public class Standings {
                     target = western;
                 }else{
                     target.add(line);
-                    // **Add function to add the total combined list and arrange them in order**
+                    // *Add function to add the total combined list and arrange them in order*
                 }
             }
             // The boolean I set earlier will turn to true, which will enable the user to now select teams.
