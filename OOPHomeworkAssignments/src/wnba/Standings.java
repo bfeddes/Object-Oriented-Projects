@@ -28,14 +28,11 @@ public class Standings {
     }
     public static void printConference(ArrayList<String> conference){
         String[] parts;
-        double gamesBack;
         double winPct, gb;
         double leadTeamWins = 0;
         double leadTeamLosses = 0;
-        String leadTeamGB = "-";
         String teamName;
         int wins, losses;
-        boolean firstPlaceTeam;
         // Printing out the WNBA conference, including their wins, losses, win percent, and games back.
         System.out.println("Team name\t\tWins\tLosses\t   PCT\t   GB");
         for(String team : conference){
@@ -77,10 +74,9 @@ public class Standings {
         ArrayList<String> eastern = new ArrayList<String>();
         ArrayList<String> western = new ArrayList<String>();
         ArrayList<String> target = null;
-        String teamName, line;
+        String line;
         String[] parts;
         int userChoice;
-        double wins, losses, winningPct, gamesBack;
         boolean proceed = false;
         try{
             Scanner fsc = new Scanner(new File(fileName));
