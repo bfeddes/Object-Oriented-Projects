@@ -39,7 +39,7 @@ public class Standings {
 			wins = (Integer.parseInt(parts[1]));
 			losses = (Integer.parseInt(parts[2]));
             pct = wins / (wins + losses);
-            System.out.printf("%-15s%-10s%-10s%6.3s\t\n",teamName,wins, losses, pct);
+            System.out.printf("%s\t\t%s\t%s\n",teamName,wins, losses);
 			System.out.print("");
         }
     }
