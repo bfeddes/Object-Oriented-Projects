@@ -87,23 +87,26 @@ public class Standings {
         // This part of the program will only run IF the file is valid. Otherwise the program will end immediately if the file is invalid.
         if (proceed == true) {
             do{
-            // Add the functional aspects for printing the standings information for each conference.
+            // This try ... catch is for if the user inputs something that would cause the program to break. Example: "one".
             try{
             userChoice = userMenu();
             } catch (Exception ex){
                 System.out.println("\nInvalid input\n");
                 userChoice = userMenu();
             }
-
+            // Displaying Eastern, Western, or overall WNBA standings based on the user's input.
             if(userChoice == 1){
-                System.out.println("Standings for the Eastern Conference");
+                System.out.println("\nStandings for the Eastern Conference");
                 printConference(eastern);
+                System.out.println();
             } else if (userChoice == 2){
-                System.out.println("Standings for the Western Conference");
-                // Display Western Conference standings
+                System.out.println("\nStandings for the Western Conference");
+                printConference(western);
+                System.out.println();
             } else if (userChoice == 3){
-                System.out.println("Combined Conference Standings");
+                System.out.println("\nCombined Conference Standings");
                 // Display total WNBA standings
+                System.out.println();
             } else if (userChoice > 4 || userChoice < 1){
                 System.out.println("\nInvalid input\n");
             }
