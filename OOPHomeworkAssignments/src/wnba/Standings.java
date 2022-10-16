@@ -25,6 +25,17 @@ public class Standings {
         int userChoice = sc.nextInt();
         return userChoice;
     }
+    public static void printConference(ArrayList<String> conference ){
+        String[] parts;
+        int wins, loss;
+        Double avg;
+        // Printing out the WNBA conference, including their wins, losses, win percent, and games back.
+        System.out.println("Team name\t\tWins\tLosses\tPCT\tGB");
+        for(String score : conference){
+            parts = score.split("\t");
+            System.out.println(parts[0]);
+        }
+    }
     /* Create header (done)
      * Offer the user options to see eastern conference standings
      * Offer the user options to see western conference standings
@@ -85,10 +96,13 @@ public class Standings {
             }
 
             if(userChoice == 1){
-                // Display Eastern Conference standings
+                System.out.println("Standings for the Eastern Conference");
+                printConference(eastern);
             } else if (userChoice == 2){
+                System.out.println("Standings for the Western Conference");
                 // Display Western Conference standings
             } else if (userChoice == 3){
+                System.out.println("Combined Conference Standings");
                 // Display total WNBA standings
             } else if (userChoice > 4 || userChoice < 1){
                 System.out.println("\nInvalid input\n");
