@@ -25,15 +25,22 @@ public class Standings {
         int userChoice = sc.nextInt();
         return userChoice;
     }
-    public static void printConference(ArrayList<String> conference ){
+    public static void printConference(ArrayList<String> conference){
         String[] parts;
-        int wins, loss;
-        Double avg;
+        double gamesBack;
+        double winPct;
+        String teamName;
+        int wins, losses, pct, gb;
         // Printing out the WNBA conference, including their wins, losses, win percent, and games back.
         System.out.println("Team name\t\tWins\tLosses\tPCT\tGB");
-        for(String score : conference){
-            parts = score.split("\t");
-            System.out.println(parts[0]);
+        for(String team : conference){
+            parts = team.split("\t");
+            teamName = parts[0];
+			wins = (Integer.parseInt(parts[1]));
+			losses = (Integer.parseInt(parts[2]));
+            pct = wins / (wins + losses);
+            System.out.printf("%-15s%-10s%-10s%6.3s\t\n",teamName,wins, losses, pct);
+			System.out.print("");
         }
     }
     /* Create header (done)
