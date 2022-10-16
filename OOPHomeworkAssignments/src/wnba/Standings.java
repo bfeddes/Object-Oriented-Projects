@@ -8,6 +8,7 @@ package wnba;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
+import java.util.Collections;
 public class Standings {
     public static void header(){
         System.out.println("***************************************************");
