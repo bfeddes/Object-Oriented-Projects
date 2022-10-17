@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 public class Standings {
+    // Method that just prints out the header to the program
     public static void header(){
         System.out.println("***************************************************");
         System.out.println("\t       2022 WNBA STANDINGS");
         System.out.println("***************************************************\n");
     }
+    // This is just a simple userMenu which prints out the user's options. Exception handling and invalid number input is in the main method.
     public static int userMenu(){
         Scanner sc = new Scanner(System.in);
         System.out.println("What would you like to see?");
@@ -25,7 +27,35 @@ public class Standings {
         int userChoice = sc.nextInt();
         return userChoice;
     }
-    
+    // This is just a short function that calculatues team win percentage.
+    public static double calcWinPct(String line) {
+		String[] parts = line.split("\t");
+        int wins = (Integer.parseInt(parts[1]));
+        int losses = (Integer.parseInt(parts[2]));
+        double winPct = wins / (wins + (double)losses); // I had to cast one of the values as a double, otherwise it would return 0 as it reads it as an int.
+		return winPct;
+	}
+    // I created this function to display all 12 teams in order. It iterates through all teams and compares their winPct and arranges them based on it.
+    public static void arrangeTeamsByPct(ArrayList<String> allTeams, String line){
+        // Variables
+        double ogWinPct = calcWinPct(line);
+        double compareAverage;
+        int place = 0;
+        // Loop iterating through the teams in the allTeams ArrayList. It calculates each team's winPct and compares it.
+        for (int i = 0; i < allTeams.size(); i++) {
+            compareAverage = calcWinPct(allTeams.get(i));
+            if (ogWinPct > compareAverage) {
+            place = i;
+            break;
+            }
+        }
+        if (place <1) {
+            allTeams.add(line);
+        }else {
+            allTeams.add(place, line);
+        }
+    }
+    // This function prints out the teams in a nicely formatted table and handles the games back calculation.
     public static void printConference(ArrayList<String> conference){
         // Variables
         String[] parts;
@@ -34,7 +64,7 @@ public class Standings {
         double leadTeamLosses = 0;
         String teamName;
         int wins, losses;
-        // Printing out the WNBA conference, including their wins, losses, win percent, and games back.
+        // Printing out the each team's stats on the season and printing it out in a nice format.
         System.out.println("Team name\t\tWins\tLosses\t   PCT\t   GB");
         for(String team : conference){
             parts = team.split("\t");
@@ -45,23 +75,19 @@ public class Standings {
             leadTeamWins = wins;
             leadTeamLosses = losses;
             }
-            winPct = wins / (wins + (double)losses); // I had to cast losses as a double here, otherwise it would just return integer value of 0 since int / int = int.
+            // I took the winPct calculation out of this method and made it its own method so I could use that method to organize teams with.
+            winPct = calcWinPct(team);
             gb = ((leadTeamWins - wins)+(losses - leadTeamLosses))/2;
+            // This if.. else statement will print a - if if it the lead team, as they don't have any games back.
             if(gb == 0){
-                System.out.printf("%-25s%3d%10d%8.3f\t   -\n",teamName,wins, losses,winPct);
-                System.out.print("");
+            System.out.printf("%-25s%3d%10d%8.3f\t   -\n",teamName, wins, losses, winPct);
+            System.out.print("");
             }else{
-            System.out.printf("%-25s%3d%10d%8.3f%7.1f\n",teamName,wins, losses,winPct,gb);
+            System.out.printf("%-25s%3d%10d%8.3f%7.1f\n",teamName, wins, losses, winPct, gb);
 			System.out.print("");
             }
         }
     }
-    /* Create header (done)
-     * Offer the user options to see eastern conference standings (done)
-     * Offer the user options to see western conference standings (done)
-     * Offer the user options to see overall standings
-     * Each display of standings will show the team name, number of wins, number of losses, winning percentage,(done) and games behind(do), teams sorted by winning percentage(do)
-     */
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         // Calling header method to print out the header
@@ -74,10 +100,12 @@ public class Standings {
         // Variables
         ArrayList<String> eastern = new ArrayList<String>();
         ArrayList<String> western = new ArrayList<String>();
+        ArrayList<String> allTeams = new ArrayList<String>();
         ArrayList<String> target = null;
         String line;
         String[] parts;
         int userChoice;
+        // Setting a default boolean value to false, meaning if the file input is invalid, it will remain false and the program will shut down.
         boolean proceed = false;
         try{
             Scanner fsc = new Scanner(new File(fileName));
@@ -94,6 +122,7 @@ public class Standings {
                     target = western;
                 }else{
                     target.add(line);
+                    arrangeTeamsByPct(allTeams, line);
                 }
             }
             // The boolean I set earlier will turn to true, which will enable the user to now select teams.
@@ -101,8 +130,8 @@ public class Standings {
             fsc.close();
             // Printing out that the teams have been read if everything functions properly
             System.out.println("The teams have been read.");
-        } catch(Exception e){
-            // Informing the user the file they input is invalid.
+        } catch(Exception ex){
+            // Informing the user the file they input is invalid and shuts down the program.
             System.out.println("Invalid file name.");
         }
         // This part of the program will only run IF the file is valid. Otherwise the program will end immediately if the file is invalid.
@@ -112,10 +141,9 @@ public class Standings {
             try{
             userChoice = userMenu();
             } catch (Exception ex){
-                System.out.println("\nInvalid input\n");
+                System.out.println("\nThat is an invalid choice.\n");
                 userChoice = userMenu();
             }
-
             // Displaying Eastern, Western, or overall WNBA standings based on the user's input.
             if(userChoice == 1){
                 System.out.println("\nStandings for the Eastern Conference");
@@ -127,10 +155,10 @@ public class Standings {
                 System.out.println();
             } else if (userChoice == 3){
                 System.out.println("\nCombined Conference Standings");
-
+                printConference(allTeams);
                 System.out.println();
             } else if (userChoice > 4 || userChoice < 1){
-                System.out.println("\nInvalid input\n");
+                System.out.println("\nThat is an invalid choice.\n");
             }
         } while (userChoice != 4);
     }
