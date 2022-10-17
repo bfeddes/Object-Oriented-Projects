@@ -8,7 +8,6 @@ package wnba;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
-import java.util.Collections;
 public class Standings {
     public static void header(){
         System.out.println("***************************************************");
@@ -26,7 +25,9 @@ public class Standings {
         int userChoice = sc.nextInt();
         return userChoice;
     }
+    
     public static void printConference(ArrayList<String> conference){
+        // Variables
         String[] parts;
         double winPct, gb;
         double leadTeamWins = 0;
@@ -65,6 +66,7 @@ public class Standings {
         Scanner sc = new Scanner(System.in);
         // Calling header method to print out the header
         header();
+
         // Asking the user to inser the correct file.
         System.out.print("Enter the standings filename: ");
         String fileName = sc.nextLine();
@@ -72,7 +74,6 @@ public class Standings {
         // Variables
         ArrayList<String> eastern = new ArrayList<String>();
         ArrayList<String> western = new ArrayList<String>();
-        ArrayList<String> allTeams = new ArrayList<String>();
         ArrayList<String> target = null;
         String line;
         String[] parts;
@@ -114,6 +115,7 @@ public class Standings {
                 System.out.println("\nInvalid input\n");
                 userChoice = userMenu();
             }
+
             // Displaying Eastern, Western, or overall WNBA standings based on the user's input.
             if(userChoice == 1){
                 System.out.println("\nStandings for the Eastern Conference");
@@ -125,10 +127,7 @@ public class Standings {
                 System.out.println();
             } else if (userChoice == 3){
                 System.out.println("\nCombined Conference Standings");
-                allTeams.addAll(eastern);
-                allTeams.addAll(western);
-                Collections.sort(allTeams);
-                printConference(allTeams);
+
                 System.out.println();
             } else if (userChoice > 4 || userChoice < 1){
                 System.out.println("\nInvalid input\n");
