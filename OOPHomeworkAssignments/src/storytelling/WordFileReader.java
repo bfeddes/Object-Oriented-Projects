@@ -11,26 +11,29 @@ import java.util.ArrayList;
 public class WordFileReader {
 
     public static LinkedHashMap<String, ArrayList<String>> readFile(String fileName) {
+        Scanner sc = new Scanner(System.in);
         String line, word, typeOfWord;
         String[] parts;
-        ArrayList<String> wordTypes; //Utilizing kinda as a pointer
-        ArrayList<String> nouns = new ArrayList<String>();
-        LinkedHashMap<String, ArrayList<String>> words = new LinkedHashMap<String, ArrayList<String>>();
+        ArrayList<String> nouns = new ArrayList<String>();; //Utilizing kinda as a pointer
+        LinkedHashMap<String, ArrayList<String>> wordList= new LinkedHashMap<String, ArrayList<String>>();
         try{
             Scanner fsc = new Scanner(new File(fileName));
             while (fsc.hasNextLine()){
                 line = fsc.nextLine().trim();
                 parts = line.split(" "); // Will split each word. Word at index 0 will be the actual word. Index 1 will be the type of word.
-                word = parts[0]; // Gets the word
-                typeOfWord = parts[1]; //Gets what type of word it is: noun, verb, adverb
-                wordTypes = new ArrayList<String>();
-                System.out.println(word); // This prints the typeOfWord it is.
+                word = parts[0];
+                typeOfWord = parts[1];
+                if (typeOfWord.equalsIgnoreCase("n")){
+                    nouns.add(word);
+                }
             }
+            wordList.put("Nouns", nouns);
+            System.out.println(wordList);
             fsc.close();
         } catch (Exception ex){
             ex.printStackTrace();
         }
-        return words;
+        return wordList;
     }
     public static void main(String[] args){
         String fileName;
