@@ -6,6 +6,7 @@
  */
 package storytelling;
 import java.util.Scanner;
+import java.util.LinkedHashMap;
 public class App {
     // Method for printing out the program's header
     public static void header(){
@@ -17,9 +18,14 @@ public class App {
     public static void main(String[] args){
         // Initializing Scanner object
         Scanner sc = new Scanner(System.in);
+        String fileName;
 
         // Calling the header method
         header();
+        // Initializing the functionality from WordFileReader class
+        System.out.print("Enter name of file: ");
+        fileName = sc.nextLine();
+        WordFileReader.readFile(fileName);
 
 
 
