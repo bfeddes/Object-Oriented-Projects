@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class WordFileReader {
 
     public static LinkedHashMap<String, ArrayList<String>> readFile(String fileName) {
+        // Variables
         String line, word, typeOfWord;
         String[] parts;
         ArrayList<String> nouns = new ArrayList<String>();
@@ -32,9 +33,13 @@ public class WordFileReader {
             }
             fsc.close();
         } catch (Exception ex){
-            ex.printStackTrace();
+            System.out.println("Invalid file name.");
         }
+        // Adding the ArrayLists of nouns, verbs, adverbs, and adjectives to wordList map.
+        wordList.put("n", nouns);
+        wordList.put("v", verbs);
+        wordList.put("adv", adv);
+        wordList.put("adj", adj);
         return wordList;
     }
-
 }
