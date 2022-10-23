@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class WordFileReader {
 
     public static LinkedHashMap<String, ArrayList<String>> readFile(String fileName) {
+        Scanner sc = new Scanner(System.in);
         // Variables
         String line, word, typeOfWord;
         String[] parts;
@@ -13,6 +14,7 @@ public class WordFileReader {
         ArrayList<String> verbs = new ArrayList<String>(); 
         ArrayList<String> adv = new ArrayList<String>(); 
         ArrayList<String> adj = new ArrayList<String>(); 
+        ArrayList<String> prep = new ArrayList<String>(); 
         LinkedHashMap<String, ArrayList<String>> wordList= new LinkedHashMap<String, ArrayList<String>>();
         try{
             Scanner fsc = new Scanner(new File(fileName));
@@ -29,6 +31,8 @@ public class WordFileReader {
                     adj.add(word);
                 } else if (typeOfWord.equalsIgnoreCase("adv")){
                     adv.add(word);
+                } else if (typeOfWord.equalsIgnoreCase("prep")){
+                    prep.add(word);
                 }
             }
             fsc.close();
@@ -40,6 +44,7 @@ public class WordFileReader {
         wordList.put("v", verbs);
         wordList.put("adv", adv);
         wordList.put("adj", adj);
+        wordList.put("prep", prep);
         return wordList;
     }
 }
