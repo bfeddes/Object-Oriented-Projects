@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class WordFileReader {
 
     public static LinkedHashMap<String, ArrayList<String>> readFile(String fileName) {
-        Scanner sc = new Scanner(System.in);
         // Variables
         String line, word, typeOfWord;
         String[] parts;
