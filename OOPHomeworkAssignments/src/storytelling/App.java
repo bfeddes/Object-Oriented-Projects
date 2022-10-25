@@ -27,7 +27,5 @@ public class App {
         fileName = sc.nextLine();
         WordFileReader.readFile(fileName);
 
-
-
     }
 }
