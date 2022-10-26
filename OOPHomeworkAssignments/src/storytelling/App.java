@@ -7,6 +7,7 @@
 package storytelling;
 import java.util.Scanner;
 import java.util.LinkedHashMap;
+import java.util.ArrayList;
 public class App {
     // Method for printing out the program's header
     public static void header(){
@@ -19,13 +20,16 @@ public class App {
         // Initializing Scanner object
         Scanner sc = new Scanner(System.in);
         String fileName;
-
-        // Calling the header method
-        header();
-        // Initializing the functionality from WordFileReader class
         System.out.print("Enter name of file: ");
         fileName = sc.nextLine();
         WordFileReader.readFile(fileName);
+        // Calling the header method
+        header();
+        // This grabs the wordList from the WordFileReader method.
+        LinkedHashMap<String, ArrayList<String>> wordList = WordFileReader.readFile(fileName);
+
+        Author a = new Author(wordList);
+        //** NEED TO WORK ON THE GETTERS/SETTERS. */
 
     }
 }
