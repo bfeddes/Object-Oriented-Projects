@@ -7,36 +7,18 @@ public class Author {
     // Test functionality from the getters/setters and constructors 
     private LinkedHashMap<String, ArrayList<String>> wordList;
     private int adjFrequency;
-    private int advFequency;
+    private int advFrequency;
     private int prepFrequency;
-    // Constructor for Author
-    public Author(LinkedHashMap<String, ArrayList<String>> wordList) {
-        wordList = new LinkedHashMap<String, ArrayList<String>>();
-    }
-    // Default Constructor
-    public Author() {
-        adjFrequency = 0;
-        advFequency = 0;
-        prepFrequency = 0;
-        wordList = new LinkedHashMap<String, ArrayList<String>>();
-    }
+    private String word;
 
-    // Getters
     public LinkedHashMap<String, ArrayList<String>> getWordList() {
         return wordList;
     }
-    public int getAdjFrequency() {
-        return adjFrequency;
-    }
-    public int getAdvFequency() {
-        return advFequency;
-    }
-    public int getPrepFrequency() {
-        return prepFrequency;
-    }
-    // Setters
     public void setWordList(LinkedHashMap<String, ArrayList<String>> wordList) {
         this.wordList = wordList;
+    }
+    public int getAdjFrequency() {
+        return adjFrequency;
     }
     public void setAdjFrequency(int adjFrequency) {
         if (adjFrequency < 0){
@@ -45,12 +27,18 @@ public class Author {
         this.adjFrequency = adjFrequency;
         }
     }
-    public void setAdvFequency(int advFequency) {
-        if (advFequency < 0){
-            this.advFequency = 0;
+    public int getAdvFrequency() {
+        return advFrequency;
+    }
+    public void setAdvFrequency(int advFrequency) {
+        if (advFrequency < 0){
+            this.advFrequency = 0;
         } else {
-        this.advFequency = advFequency;
+        this.advFrequency = advFrequency;
         }
+    }
+    public int getPrepFrequency() {
+        return prepFrequency;
     }
     public void setPrepFrequency(int prepFrequency) {
         if (prepFrequency < 0){
@@ -59,5 +47,25 @@ public class Author {
         this.prepFrequency = prepFrequency;
         }
     }
-    
+    public String getWord() {
+        return word;
+    }
+    public void setWord(String word){
+        this.word = word;
+    }
+    // Constructor for Author
+    public Author(LinkedHashMap<String, ArrayList<String>> wordList, String word) {
+        setWord(word);
+        wordList = new LinkedHashMap<String, ArrayList<String>>();
+        wordList.get(word);
+
+    }
+    // Default Constructor
+    public Author() {
+        adjFrequency = 0;
+        advFrequency = 0;
+        prepFrequency = 0;
+        word = "";
+        wordList = new LinkedHashMap<String, ArrayList<String>>();
+    }
 }
