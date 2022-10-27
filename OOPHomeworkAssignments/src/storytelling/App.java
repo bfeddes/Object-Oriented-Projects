@@ -19,6 +19,8 @@ public class App {
     public static void main(String[] args){
         // Initializing Scanner object
         Scanner sc = new Scanner(System.in);
+        // Variables
+        int adjFrequency, advFrequency, prepFrequency; ;
         String fileName;
         System.out.print("Enter name of file: ");
         fileName = sc.nextLine();
@@ -27,8 +29,9 @@ public class App {
         header();
         // This grabs the wordList from the WordFileReader method.
         LinkedHashMap<String, ArrayList<String>> wordList = WordFileReader.readFile(fileName);
-
-        Author a = new Author(wordList);
+        System.out.print("Enter the type of word: ");
+        String word = sc.next();
+        Author story = new Author(wordList, word);
         //** NEED TO WORK ON THE GETTERS/SETTERS. */
 
     }
