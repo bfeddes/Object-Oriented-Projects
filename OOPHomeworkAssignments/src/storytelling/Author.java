@@ -10,6 +10,7 @@ public class Author {
     private int advFrequency;
     private int prepFrequency;
     private String word;
+    private String sentence;
 
     public LinkedHashMap<String, ArrayList<String>> getWordList() {
         return wordList;
@@ -46,6 +47,12 @@ public class Author {
         } else {
         this.prepFrequency = prepFrequency;
         }
+    }
+    public String getSentence(){
+        return sentence;
+    }
+    public void setSentence(String sentence){
+        this.sentence = sentence;
     }
     public String getWord() {
         return word;
