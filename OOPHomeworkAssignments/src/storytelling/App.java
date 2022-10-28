@@ -22,16 +22,19 @@ public class App {
         // Variables
         int adjFrequency, advFrequency, prepFrequency; ;
         String fileName;
-        System.out.print("Enter name of file: ");
-        fileName = sc.nextLine();
-        WordFileReader.readFile(fileName);
+
         // Calling the header method
         header();
+
+        System.out.print("Enter the name of the word file: ");
+        fileName = sc.nextLine();
+        WordFileReader.readFile(fileName);
         // This grabs the wordList from the WordFileReader method.
         LinkedHashMap<String, ArrayList<String>> wordList = WordFileReader.readFile(fileName);
         System.out.print("Enter the type of word: ");
         String word = sc.next();
         Author story = new Author(wordList, word);
+        System.out.println(story);
         //** NEED TO WORK ON THE GETTERS/SETTERS. */
 
     }
