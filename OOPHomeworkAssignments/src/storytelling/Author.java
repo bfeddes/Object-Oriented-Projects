@@ -11,6 +11,7 @@ public class Author {
     private int prepFrequency;
     private String word;
     private String sentence;
+    private Random rnd = new Random();
 
 
     public LinkedHashMap<String, ArrayList<String>> getWordList() {
@@ -59,13 +60,12 @@ public class Author {
         return sentence;
     }
     public void setSentence(String sentence) {
-        this.sentence = sentence;
+        this.sentence = wordList.get("n").get(rnd.nextInt(wordList.get("n").size()));
     }
     // Constructor for Author
-    public Author(LinkedHashMap<String, ArrayList<String>> wordList, String word) {
-        setWord(word);
-        wordList = new LinkedHashMap<String, ArrayList<String>>();
-        wordList.get(word).get(0);
+    public Author(LinkedHashMap<String, ArrayList<String>> wordList) {
+        setWordList(wordList);
+        setSentence(sentence);
     }
     // Default Constructor
     public Author() {
@@ -77,6 +77,6 @@ public class Author {
     }
     @Override
     public String toString() {
-        return String.format("%s", getWord());
+        return String.format("The %s", sentence);
     }
 }
