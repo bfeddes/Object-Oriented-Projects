@@ -12,6 +12,7 @@ public class Author {
     private String word;
     private String sentence;
 
+
     public LinkedHashMap<String, ArrayList<String>> getWordList() {
         return wordList;
     }
@@ -22,8 +23,8 @@ public class Author {
         return adjFrequency;
     }
     public void setAdjFrequency(int adjFrequency) {
-        if (adjFrequency < 0){
-            this.adjFrequency = 0;
+        if (adjFrequency < 0) {
+            adjFrequency = 0;
         } else {
         this.adjFrequency = adjFrequency;
         }
@@ -33,8 +34,8 @@ public class Author {
     }
     public void setAdvFrequency(int advFrequency) {
         if (advFrequency < 0){
-            this.advFrequency = 0;
-        } else {
+            advFrequency = 0;
+        } else{
         this.advFrequency = advFrequency;
         }
     }
@@ -42,30 +43,29 @@ public class Author {
         return prepFrequency;
     }
     public void setPrepFrequency(int prepFrequency) {
-        if (prepFrequency < 0){
-            this.prepFrequency = 0;
+        if (prepFrequency < 0) {
+            prepFrequency = 0;
         } else {
         this.prepFrequency = prepFrequency;
         }
     }
-    public String getSentence(){
-        return sentence;
-    }
-    public void setSentence(String sentence){
-        this.sentence = sentence;
-    }
     public String getWord() {
         return word;
     }
-    public void setWord(String word){
+    public void setWord(String word) {
         this.word = word;
+    }
+    public String getSentence() {
+        return sentence;
+    }
+    public void setSentence(String sentence) {
+        this.sentence = sentence;
     }
     // Constructor for Author
     public Author(LinkedHashMap<String, ArrayList<String>> wordList, String word) {
         setWord(word);
         wordList = new LinkedHashMap<String, ArrayList<String>>();
-        wordList.get(word);
-
+        wordList.get(word).get(0);
     }
     // Default Constructor
     public Author() {
@@ -74,5 +74,9 @@ public class Author {
         prepFrequency = 0;
         word = "";
         wordList = new LinkedHashMap<String, ArrayList<String>>();
+    }
+    @Override
+    public String toString() {
+        return String.format("%s", getWord());
     }
 }
