@@ -1,3 +1,9 @@
+/* Brian Feddes
+ * Professor Klump
+ * Object-Oriented Programming
+ * Fall 2022
+ * StoryTelling Assignment, WordFileReader Class
+ */
 package storytelling;
 import java.util.Scanner;
 import java.io.File;
@@ -37,6 +43,7 @@ public class WordFileReader {
             fsc.close();
         } catch (Exception ex){
             System.out.println("Invalid file name.");
+            System.exit(0);
         }
         // Adding the ArrayLists of nouns, verbs, adverbs, and adjectives to wordList map.
         wordList.put("n", nouns);

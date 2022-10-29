@@ -1,8 +1,8 @@
 /* Brian Feddes
- * StoryTelling Programming Assignment
- * Object Oriented Programming
  * Professor Klump
+ * Object-Oriented Programming
  * Fall 2022
+ * StoryTelling Assignment, App Class
  */
 package storytelling;
 import java.util.Scanner;
@@ -32,9 +32,20 @@ public class App {
         // This grabs the wordList from the WordFileReader method.
         LinkedHashMap<String, ArrayList<String>> wordList = WordFileReader.readFile(fileName);
         Author story = new Author(wordList);
+        // Do loop that will continue to ask the user for information about their story and if they want another one.
         do {
             System.out.print("\nHow many sentences would you like in your story? ");
             numOfSentences = sc.nextInt();
+            System.out.println("On a scale of 0 to 10 ...");
+            System.out.print("  How frequently should adjectives be used? ");
+            adjFrequency = sc.nextInt();
+            story.setAdjFrequency(adjFrequency);
+            System.out.print("  How frequently should adverbs be used? ");
+            advFrequency = sc.nextInt();
+            story.setAdvFrequency(advFrequency);
+            System.out.print("  How frequently should prepositions be used? ");
+            prepFrequency = sc.nextInt();
+            story.setPrepFrequency(prepFrequency);
             System.out.println("Here it is:");
             story.tellStory(numOfSentences);
             System.out.print("\nWould you like another story (y or n)? ");
