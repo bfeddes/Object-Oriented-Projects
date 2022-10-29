@@ -20,7 +20,7 @@ public class App {
         // Initializing Scanner object
         Scanner sc = new Scanner(System.in);
         // Variables
-        int adjFrequency, advFrequency, prepFrequency; ;
+        int adjFrequency, advFrequency, prepFrequency, numOfSentences;
         String fileName, decision;
 
         // Calling the header method
@@ -32,9 +32,14 @@ public class App {
         // This grabs the wordList from the WordFileReader method.
         LinkedHashMap<String, ArrayList<String>> wordList = WordFileReader.readFile(fileName);
         Author story = new Author(wordList);
-        System.out.println(story);
-
-        //** NEED TO WORK ON THE GETTERS/SETTERS. */
-
+        do {
+            System.out.print("\nHow many sentences would you like in your story? ");
+            numOfSentences = sc.nextInt();
+            System.out.println("Here it is:");
+            story.tellStory(numOfSentences);
+            System.out.print("\nWould you like another story (y or n)? ");
+            decision = sc.next();
+        } while (decision.equalsIgnoreCase("y"));
+        System.out.println("\nThank you for using StoryTeller!");
     }
 }
