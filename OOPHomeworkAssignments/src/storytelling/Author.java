@@ -2,17 +2,13 @@ package storytelling;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Random;
+
 public class Author {
-    // Add a LinkedHashMap to house the collection of words it can use from WordFileReader
-    // Test functionality from the getters/setters and constructors 
     private LinkedHashMap<String, ArrayList<String>> wordList;
     private int adjFrequency;
     private int advFrequency;
     private int prepFrequency;
-    private String word;
-    private String sentence;
     private Random rnd = new Random();
-
 
     public LinkedHashMap<String, ArrayList<String>> getWordList() {
         return wordList;
@@ -20,6 +16,7 @@ public class Author {
     public void setWordList(LinkedHashMap<String, ArrayList<String>> wordList) {
         this.wordList = wordList;
     }
+
     public int getAdjFrequency() {
         return adjFrequency;
     }
@@ -50,33 +47,29 @@ public class Author {
         this.prepFrequency = prepFrequency;
         }
     }
-    public String getWord() {
-        return word;
-    }
-    public void setWord(String word) {
-        this.word = word;
+    public String getWord(String word){
+        String wordType = wordList.get(word).get(rnd.nextInt(wordList.get(word).size()));
+        return wordType;
     }
     public String getSentence() {
+        String sentence = String.format("The %s %s %s %s %s the %s.", getWord("adj"), getWord("n"), getWord("v"),
+        getWord("adv"), getWord("prep"), getWord("n"));
         return sentence;
     }
-    public void setSentence(String sentence) {
-        this.sentence = wordList.get("n").get(rnd.nextInt(wordList.get("n").size()));
+    public void tellStory(int numOfSentences){
+        for (int i = 0 ; i < numOfSentences; i++){
+            System.out.println(getSentence());
+        }
     }
     // Constructor for Author
     public Author(LinkedHashMap<String, ArrayList<String>> wordList) {
         setWordList(wordList);
-        setSentence(sentence);
     }
     // Default Constructor
     public Author() {
         adjFrequency = 0;
         advFrequency = 0;
         prepFrequency = 0;
-        word = "";
         wordList = new LinkedHashMap<String, ArrayList<String>>();
-    }
-    @Override
-    public String toString() {
-        return String.format("The %s", sentence);
     }
 }
