@@ -5,6 +5,7 @@
  * Menagerie Assignment, Pet Class
  */
 package menagerie;
+import java.util.Random;
 /*TO-DO:
  * Add info to setters.
  * Declare a Random number generator object that will function as the pet's brain deciding what it will do each hour.
@@ -17,11 +18,34 @@ package menagerie;
  * Pet class must also have an abstract function called act() that subclasses will implement to choose among a variety of tasks specific to that kind of pet.
  */
 
-public class Pet {
+public abstract class Pet {
     // Variables/features all pets have
     private String name;
     private int age;
     private double weight;
+    private int eatProb;
+    private int sleepProb;
+    public int getEatProb() {
+        return eatProb;
+    }
+    public void setEatProb(int eatProb) {
+        this.eatProb = eatProb;
+    }
+    public int getSleepProb() {
+        return sleepProb;
+    }
+    public void setSleepProb(int sleepProb) {
+        this.sleepProb = sleepProb;
+    }
+    public int getSeekAttProb() {
+        return seekAttProb;
+    }
+    public void setSeekAttProb(int seekAttProb) {
+        this.seekAttProb = seekAttProb;
+    }
+    private int seekAttProb;
+    private Random petBrain = new Random();
+    // Getters and setters
     public String getName() {
         return name;
     }
@@ -40,6 +64,12 @@ public class Pet {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+    public Random getPetBrain() {
+        return petBrain;
+    }
+    public void setPetBrain(Random petBrain) {
+        this.petBrain = petBrain;
+    }
     // Default constructor
     public Pet(){
         name = "";
@@ -52,9 +82,10 @@ public class Pet {
         setAge(age);
         setWeight(weight);
     }
-
+    public abstract String getType();
+    @Override
     public String toString() {
-        return String.format("%s\t%d\t%.2f",name, age, weight);
+        return String.format("%s\t%d\t%.2f",getType(), name, age, weight);
     }
 
 }
