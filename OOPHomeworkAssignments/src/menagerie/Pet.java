@@ -82,10 +82,10 @@ public abstract class Pet {
         setAge(age);
         setWeight(weight);
     }
-    public abstract String getType();
-    @Override
+    //public abstract String getType();
+    //@Override
     public String toString() {
-        return String.format("%s\t%d\t%.2f",getType(), name, age, weight);
+        return String.format("%s\t%d\t%.2f", name, age, weight);
     }
 
 }
