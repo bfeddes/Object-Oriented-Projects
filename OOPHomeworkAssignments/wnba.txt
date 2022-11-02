@@ -5,6 +5,7 @@ Washington Mystics	22	14
 New York Liberty	16	20
 Atlanta Dream	14	22
 Indiana Fever	5	31
+
 Conference: Western
 Las Vegas Aces	26	10
 Seattle Storm	22	14
