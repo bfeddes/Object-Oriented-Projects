@@ -6,6 +6,6 @@
  */
 package menagerie;
 
-public class Dog {
+public class Dog extends Pet {
     
 }
