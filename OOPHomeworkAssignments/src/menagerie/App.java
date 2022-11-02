@@ -15,6 +15,9 @@ public class App {
         // Calling the header method
         header();
         System.out.println("What would you like to do?");
+
+        // Goodbye message
+        System.out.println("\nThank you for using Menagerie. We hope you had fun.");
     }
     
 }
