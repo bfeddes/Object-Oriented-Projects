@@ -25,6 +25,10 @@ public abstract class Pet {
     private double weight;
     private int eatProb;
     private int sleepProb;
+    private int seekAttProb;
+    private Random petBrain;
+
+    // Getters and setters
     public int getEatProb() {
         return eatProb;
     }
@@ -43,9 +47,6 @@ public abstract class Pet {
     public void setSeekAttProb(int seekAttProb) {
         this.seekAttProb = seekAttProb;
     }
-    private int seekAttProb;
-    private Random petBrain = new Random();
-    // Getters and setters
     public String getName() {
         return name;
     }
@@ -56,13 +57,21 @@ public abstract class Pet {
         return age;
     }
     public void setAge(int age) {
+        if (age < 0) {
+            age = 0;
+        } else {
         this.age = age;
+        }
     }
     public double getWeight() {
         return weight;
     }
     public void setWeight(double weight) {
+        if (weight < 0) {
+            weight = 0;
+        }else {
         this.weight = weight;
+        }
     }
     public Random getPetBrain() {
         return petBrain;
@@ -83,7 +92,7 @@ public abstract class Pet {
         setWeight(weight);
     }
     //public abstract String getType();
-    //@Override
+    @Override
     public String toString() {
         return String.format("%s\t%d\t%.2f", name, age, weight);
     }
