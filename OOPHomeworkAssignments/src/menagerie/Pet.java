@@ -26,7 +26,7 @@ public abstract class Pet {
     private int eatProb;
     private int sleepProb;
     private int seekAttProb;
-    private Random petBrain;
+    private int petBrain;
 
     // Getters and setters
     public int getEatProb() {
@@ -73,11 +73,11 @@ public abstract class Pet {
         this.weight = weight;
         }
     }
-    public Random getPetBrain() {
+    public int getPetBrain() {
         return petBrain;
     }
     public void setPetBrain(Random petBrain) {
-        this.petBrain = petBrain;
+        this.petBrain = petBrain.nextInt(10);
     }
     // Default constructor
     public Pet(){
@@ -92,7 +92,8 @@ public abstract class Pet {
         setWeight(weight);
     }
     // **Abstract function for getType()**
-    public abstract String getType();
+    public abstract String getAnimalType();
+    public abstract String act();
     //** Abstract function for act()
     //public abstract String act();
     @Override
