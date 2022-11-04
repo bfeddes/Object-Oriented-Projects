@@ -7,5 +7,15 @@
 package menagerie;
 
 public class Cat extends Pet {
+
+
+    @Override
+    public String getType() {
+        return "Cat";
+    }
+    @Override
+    public String toString() {
+        return String.format("%s\t%s", getType(), super.toString());
+    }
     
 }

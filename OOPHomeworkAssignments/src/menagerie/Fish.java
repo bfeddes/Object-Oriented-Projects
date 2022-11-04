@@ -6,6 +6,16 @@
  */
 package menagerie;
 
-public class Fish extends Pet {
-    
+public class Fish extends Pet{
+
+
+
+    @Override
+    public String getType() {
+        return "Fish";
+    }
+    @Override
+    public String toString() {
+        return String.format("%s\t%s", getType(), super.toString());
+    }
 }
