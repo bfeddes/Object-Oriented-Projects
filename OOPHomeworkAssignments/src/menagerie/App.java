@@ -5,6 +5,8 @@
  * Menagerie Assignment, App Class
  */
 package menagerie;
+import java.util.Collections;
+import java.util.ArrayList;
 public class App {
     public static void header(){
         System.out.println("************************************************************");
