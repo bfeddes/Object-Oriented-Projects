@@ -91,7 +91,10 @@ public abstract class Pet {
         setAge(age);
         setWeight(weight);
     }
-    //public abstract String getType();
+    // **Abstract function for getType()**
+    public abstract String getType();
+    //** Abstract function for act()
+    //public abstract String act();
     @Override
     public String toString() {
         return String.format("%s\t%d\t%.2f", name, age, weight);
