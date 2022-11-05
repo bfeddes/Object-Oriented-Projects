@@ -7,7 +7,6 @@
 package menagerie;
 import java.util.Random;
 /*TO-DO:
- * Add info to setters.
  * Declare a Random number generator object that will function as the pet's brain deciding what it will do each hour.
  * Create int variables that are used to determine whether the pet will eat, sleep, or seek attention. (similar to the storyteller thing i created)
  * Add constructors 
@@ -18,17 +17,16 @@ import java.util.Random;
  * Pet class must also have an abstract function called act() that subclasses will implement to choose among a variety of tasks specific to that kind of pet.
  */
 
-public abstract class Pet {
+public abstract class Pet implements Comparable<Pet> {
     // Variables/features all pets have
     private String name;
     private int age;
     private double weight;
+    private int petBrain;
     private int eatProb;
     private int sleepProb;
     private int seekAttProb;
-    private int petBrain;
 
-    // Getters and setters
     public int getEatProb() {
         return eatProb;
     }
@@ -47,6 +45,7 @@ public abstract class Pet {
     public void setSeekAttProb(int seekAttProb) {
         this.seekAttProb = seekAttProb;
     }
+    // Getters and setters
     public String getName() {
         return name;
     }
@@ -77,7 +76,40 @@ public abstract class Pet {
         return petBrain;
     }
     public void setPetBrain(Random petBrain) {
-        this.petBrain = petBrain.nextInt(10);
+        this.petBrain = petBrain.nextInt(25);
+    }
+    // Functions to determine if the pet is sleeping, needs food, or needs attention
+    public boolean needsFood() {
+        if (getEatProb() >= getPetBrain()) {
+        return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean needsSleep() {
+        if (getSleepProb() >= getPetBrain()) {
+        return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean needsAtt() {
+        if (getSeekAttProb() >= getPetBrain()) {
+        return true;
+        } else {
+            return false;
+        }
+    }
+    // Act function: This will return a String explaining everything the pet has done since the last time it was called. 
+    public String act() {
+        return "come back to this";
+        /*
+         * Code to add:
+         * Return a string that explains everything the pet has done since the last time act was called.
+         * The act() function will lean on its functions for determining if the pet needs to sleep, to eat, or to get attention to decide 
+         * whether those activities should be mentioned in the multi-line String it returns.
+         * Subclasses Dog, Cat, and Fish will override this to add on to these instinctual actions a Pet may take.
+         */
     }
     // Default constructor
     public Pet(){
@@ -91,14 +123,19 @@ public abstract class Pet {
         setAge(age);
         setWeight(weight);
     }
-    // **Abstract function for getType()**
+    // Abstract classes
     public abstract String getAnimalType();
-    public abstract String act();
-    //** Abstract function for act()
-    //public abstract String act();
+    public abstract void animalCutoffs();
+    // toString method
     @Override
     public String toString() {
         return String.format("%s\t%d\t%.2f", name, age, weight);
     }
-
+    // compareTo method
+    @Override 
+    public int compareTo(Pet other){
+        String myPetName = name;
+        String otherPetName = other.name;
+        return myPetName.compareTo(otherPetName);
+    }
 }
