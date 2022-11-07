@@ -7,8 +7,20 @@
 package menagerie;
 public class Dog extends Pet {
 
+    // Constructors
+    public Dog(){
+        super();
+    }
     public Dog(String name, int age, double weight){
         super(name, age, weight);
+    }
+    // Review this
+    public String foodMessage(){
+        if (needsFood()){
+            return getName() + "Grabs a biscuit";
+        } else {
+            return "";
+        }
     }
     @Override
     public void animalCutoffs(){

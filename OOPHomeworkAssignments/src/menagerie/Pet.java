@@ -22,11 +22,10 @@ public abstract class Pet implements Comparable<Pet> {
     private String name;
     private int age;
     private double weight;
-    private int petBrain;
+    private Random rnd;
     private int eatProb;
     private int sleepProb;
     private int seekAttProb;
-
     public int getEatProb() {
         return eatProb;
     }
@@ -72,29 +71,23 @@ public abstract class Pet implements Comparable<Pet> {
         this.weight = weight;
         }
     }
-    public int getPetBrain() {
-        return petBrain;
-    }
-    public void setPetBrain(Random petBrain) {
-        this.petBrain = petBrain.nextInt(25);
-    }
     // Functions to determine if the pet is sleeping, needs food, or needs attention
     public boolean needsFood() {
-        if (getEatProb() >= getPetBrain()) {
+        if (getEatProb() >= rnd.nextInt(24)) {
         return true;
         } else {
             return false;
         }
     }
     public boolean needsSleep() {
-        if (getSleepProb() >= getPetBrain()) {
+        if (getSleepProb() >= rnd.nextInt(24)) {
         return true;
         } else {
             return false;
         }
     }
     public boolean needsAtt() {
-        if (getSeekAttProb() >= getPetBrain()) {
+        if (getSeekAttProb() >= rnd.nextInt(24)) {
         return true;
         } else {
             return false;
