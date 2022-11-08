@@ -73,21 +73,21 @@ public abstract class Pet implements Comparable<Pet> {
     }
     // Functions to determine if the pet is sleeping, needs food, or needs attention
     public boolean needsFood() {
-        if (getEatProb() >= rnd.nextInt(24)) {
+        if (getEatProb() > rnd.nextInt(24)) {
         return true;
         } else {
             return false;
         }
     }
     public boolean needsSleep() {
-        if (getSleepProb() >= rnd.nextInt(24)) {
+        if (getSleepProb() > rnd.nextInt(24)) {
         return true;
         } else {
             return false;
         }
     }
     public boolean needsAtt() {
-        if (getSeekAttProb() >= rnd.nextInt(24)) {
+        if (getSeekAttProb() > rnd.nextInt(24)) {
         return true;
         } else {
             return false;
