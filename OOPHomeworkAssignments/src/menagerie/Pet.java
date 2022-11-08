@@ -97,13 +97,9 @@ public abstract class Pet implements Comparable<Pet> {
     public String act() {
         if (needsFood()){
             return "The " + getAnimalType() + ", " + getname() + " was hungry and ate."; 
-        } else {
-            return "";
-        }
+        } 
         if (needsAtt()){
             return "The " + getAnimalType() + ", " + getname() + " sought your attention."; 
-        } else {
-            return "";
         }
         if (needsSleep()){
             return "The " + getAnimalType() + ", " + getname() + " was sleepy and took a nap."; 
