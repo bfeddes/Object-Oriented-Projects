@@ -95,14 +95,21 @@ public abstract class Pet implements Comparable<Pet> {
     }
     // Act function: This will return a String explaining everything the pet has done since the last time it was called. 
     public String act() {
-        return "come back to this";
-        /*
-         * Code to add:
-         * Return a string that explains everything the pet has done since the last time act was called.
-         * The act() function will lean on its functions for determining if the pet needs to sleep, to eat, or to get attention to decide 
-         * whether those activities should be mentioned in the multi-line String it returns.
-         * Subclasses Dog, Cat, and Fish will override this to add on to these instinctual actions a Pet may take.
-         */
+        if (needsFood()){
+            return "The " + getAnimalType() + ", " + getname() + " was hungry and ate."; 
+        } else {
+            return "";
+        }
+        if (needsAtt()){
+            return "The " + getAnimalType() + ", " + getname() + " sought your attention."; 
+        } else {
+            return "";
+        }
+        if (needsSleep()){
+            return "The " + getAnimalType() + ", " + getname() + " was sleepy and took a nap."; 
+        } else {
+            return "";
+        }
     }
     // Default constructor
     public Pet(){
