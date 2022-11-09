@@ -33,7 +33,7 @@ public class App {
             System.out.println("5. Simulate a day in the life of your pets.");
             System.out.println("6. Clear your list of pets.");
             System.out.println("7. Exit");
-            System.out.print("Ente the number of your choice: ");
+            System.out.print("Enter the number of your choice: ");
             userChoice = sc.nextInt();
             if (userChoice < 1 || userChoice > 7){
                 System.out.println("Invalid selection.");
@@ -46,27 +46,36 @@ public class App {
                 String petName = sc.next();
                 int petAge = sc.nextInt();
                 double petWeight = sc.nextDouble();
-                if (petChoice.equalsIgnoreCase("d")){
+                if (petChoice.equalsIgnoreCase("d")) {
                     pets.add(new Dog(petName, petAge, petWeight));
+                } else if (petChoice.equalsIgnoreCase("c")) {
+                    pets.add(new Cat(petName, petAge, petWeight));
                 }
                 Collections.sort(pets);
             }
             // This option will print out the list of pets in alphabetical order by name
             if (userChoice == 2) {
-                for (Pet pet : pets) {
-                    System.out.println(pet);
-                }
                 if (pets.isEmpty()){
                     System.out.println("\nThe list of pets is empty.");
+                } else {
+                    System.out.println("Here is your list of pets:");
+                    for (Pet pet : pets) {
+                        System.out.println(pet);
+                    }
                 }
             }
             if (userChoice == 5) {
-                for (Pet pet : pets) {
-                    System.out.println(pet.act());
+                if (pets.isEmpty()){
+                    System.out.println("There are no pets in your list.");
+                } else{
+                    System.out.println("\nHere is a simulation of a day in the life of your pets:");
+                    for (int i = 1; i <= 24; i++) {
+                        System.out.printf("\nHOUR  %d\n-------\n", i);
+                        for (Pet pet : pets) {
+                            System.out.print(pet.act());
+                        }
+                    }
                 }
-                /*
-                 * Add code here to simulate a day in the life.
-                 */
             }
             // This choice will clear the ArrayList of pets
             if (userChoice == 6){
