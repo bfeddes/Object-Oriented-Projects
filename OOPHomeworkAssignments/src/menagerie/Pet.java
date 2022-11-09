@@ -124,7 +124,7 @@ public abstract class Pet implements Comparable<Pet> {
     @Override
     public String toString() {
         // Had to add some more room for names in case someone enters an excessively long name.
-        return String.format("%-7s\t%d\t%.2f", name, age, weight);
+        return String.format("%s\t%d\t%.2f", name, age, weight);
     }
     // compareTo method
     @Override 
