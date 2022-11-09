@@ -8,10 +8,12 @@ package menagerie;
 import java.util.Random;
 
 public class Cat extends Pet {
+    // Variables
     private int scratchProb;
     private int pukeInShoeProb;
     private int hissProb;
     private Random rnd;
+
     // Getters and setters
     public int getScratchProb() {
         return scratchProb;
@@ -31,6 +33,7 @@ public class Cat extends Pet {
     public void setHissProb(int hissProb) {
         this.hissProb = hissProb;
     }
+    // Boolean methods to determine if that specific action should be included in the act() String
     public boolean hissed() {
         if (getHissProb() > rnd.nextInt(24)) {
             return true;
@@ -62,7 +65,7 @@ public class Cat extends Pet {
         animalCutoffs();
         rnd = new Random();
     }
-    // Act method for cat
+    // Act method for cat that will print out the cat's activities each hour.
     @Override 
     public String act(){
         String extraActivities = "";
@@ -74,7 +77,7 @@ public class Cat extends Pet {
             extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + ", saw your new pair of shoes and puked in them.\n");
         }
         if (scratched()) {
-            extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + ", decided you looked too happy and scratched.\n");
+            extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + ", decided you looked too happy and scratched you.\n");
         }
         return extraActivities;
     }
@@ -82,10 +85,10 @@ public class Cat extends Pet {
     @Override
     public void animalCutoffs() {
         setEatProb(7);
-        setSleepProb(18);
+        setSleepProb(16);
         setSeekAttProb(3);
         setHissProb(7);
-        setPukeInShoeProb(10);
+        setPukeInShoeProb(7);
         setScratchProb(9);
     }
     // Overriding the animal type for a cat.
@@ -93,6 +96,7 @@ public class Cat extends Pet {
     public String getAnimalType() {
         return "cat";
     }
+    // Override the toString method
     @Override
     public String toString() {
         return String.format("%s\t%s", getAnimalType(), super.toString());
