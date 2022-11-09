@@ -95,15 +95,15 @@ public abstract class Pet implements Comparable<Pet> {
     }
     // Act function: This will return a String explaining everything the pet has done since the last time it was called. 
     public String act() {
-        String hourlyAcitivities = "";
+        String hourlyActivities = "";
         if (needsFood()){
-            hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getname() + " was hungry and ate.\n"); 
+            hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getName() + " was hungry and ate.\n"); 
         } 
         if (needsAtt()){
-             hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getname() + " sought your attention.\n"); 
+             hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getName() + " sought your attention.\n"); 
         }
         if (needsSleep()){
-            hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getname() + " was sleepy and took a nap.\n"); 
+            hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getName() + " was sleepy and took a nap.\n"); 
         }
         return hourlyActivities;
     }
