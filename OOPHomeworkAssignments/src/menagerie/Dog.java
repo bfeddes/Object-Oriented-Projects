@@ -7,12 +7,14 @@
 package menagerie;
 import java.util.Random;
 public class Dog extends Pet {
+    // Variables
     private int biteProb;
     private int comfortedHuman;
     private int chewedUpShoe;
     private int ateHomework;
     private Random rnd;
 
+    // Getters and setters
     public int getBiteProb() {
         return biteProb;
     }
@@ -37,6 +39,7 @@ public class Dog extends Pet {
     public void setAteHomework(int ateHomework) {
         this.ateHomework = ateHomework;
     }
+    // Methods for determining if a certain action should be included in the act() string.
     public boolean ateHomework() {
         if (getAteHomework() > rnd.nextInt(24)) {
             return true;
@@ -66,15 +69,17 @@ public class Dog extends Pet {
             return false;
         }
     }
-        // Constructors
+        // Default constructor
         public Dog(){
             super();
         }
+        // Non-default constructor 
         public Dog(String name, int age, double weight) {
             super(name, age, weight);
             animalCutoffs();
             rnd = new Random();
         }
+    // Initializing the cutoffs for a dog
     @Override
     public void animalCutoffs(){
         setEatProb(8);
@@ -85,6 +90,7 @@ public class Dog extends Pet {
         setComfortedHuman(11);
         setBiteProb(1); 
     }
+    // Act method for dog that will print out the dog's activities each hour.
     @Override 
     public String act() {
         String extraActivities = "";
