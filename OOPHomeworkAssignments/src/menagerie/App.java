@@ -60,9 +60,11 @@ public class App {
                     System.out.println("\nThe list of pets is empty.");
                 }
             }
-
-
-
+            if (userChoice == 5) {
+                for (Pet pet : pets) {
+                    System.out.println(pet.act());
+                }
+            }
             // This choice will clear the ArrayList of pets
             if (userChoice == 6){
                 pets.clear();
