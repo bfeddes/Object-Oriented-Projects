@@ -11,7 +11,7 @@ public class Dog extends Pet {
     private int comfortedHuman;
     private int chewedUpShoe;
     private int ateHomework;
-    private Random rnd;
+    private Random rnd = new Random();
 
     public int getBiteProb() {
         return biteProb;
@@ -36,13 +36,6 @@ public class Dog extends Pet {
     }
     public void setAteHomework(int ateHomework) {
         this.ateHomework = ateHomework;
-    }
-    // Constructors
-    public Dog(){
-        super();
-    }
-    public Dog(String name, int age, double weight) {
-        super(name, age, weight);
     }
     public boolean ateHomework() {
         if (getAteHomework() > rnd.nextInt(24)) {
@@ -73,6 +66,14 @@ public class Dog extends Pet {
             return false;
         }
     }
+        // Constructors
+        public Dog(){
+            super();
+        }
+        public Dog(String name, int age, double weight) {
+            super(name, age, weight);
+            animalCutoffs();
+        }
     @Override
     public void animalCutoffs(){
         setEatProb(24);

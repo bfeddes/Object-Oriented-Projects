@@ -6,16 +6,6 @@
  */
 package menagerie;
 import java.util.Random;
-/*TO-DO:
- * Declare a Random number generator object that will function as the pet's brain deciding what it will do each hour.
- * Create int variables that are used to determine whether the pet will eat, sleep, or seek attention. (similar to the storyteller thing i created)
- * Add constructors 
- * Add a toString function.
- * Must have an abstract getType() function that returns a String that indicates what type of animal it is.
- * Create functions to indicate whether it is eating, sleeping, or seeking attention by comparing a randomly generated number against the eat, sleep, and attention behavior cutoffs.
- * Above functions must be called during the simulation for each hour of the day.
- * Pet class must also have an abstract function called act() that subclasses will implement to choose among a variety of tasks specific to that kind of pet.
- */
 
 public abstract class Pet implements Comparable<Pet> {
     // Variables/features all pets have
@@ -26,6 +16,8 @@ public abstract class Pet implements Comparable<Pet> {
     private int eatProb;
     private int sleepProb;
     private int seekAttProb;
+
+    // Getters and setters
     public int getEatProb() {
         return eatProb;
     }
@@ -44,7 +36,6 @@ public abstract class Pet implements Comparable<Pet> {
     public void setSeekAttProb(int seekAttProb) {
         this.seekAttProb = seekAttProb;
     }
-    // Getters and setters
     public String getName() {
         return name;
     }
@@ -70,6 +61,12 @@ public abstract class Pet implements Comparable<Pet> {
         }else {
         this.weight = weight;
         }
+    }
+    public Random getRnd() {
+        return rnd;
+    }
+    public void setRnd(Random rnd) {
+        this.rnd = rnd;
     }
     // Functions to determine if the pet is sleeping, needs food, or needs attention
     public boolean needsFood() {
@@ -118,6 +115,7 @@ public abstract class Pet implements Comparable<Pet> {
         setName(name);
         setAge(age);
         setWeight(weight);
+        rnd = new Random();
     }
     // Abstract classes
     public abstract String getAnimalType();

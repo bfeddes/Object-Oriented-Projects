@@ -62,11 +62,11 @@ public class App {
             }
             if (userChoice == 5) {
                 for (Pet pet : pets) {
-                    // Current values are sitting at 0. Need to fix these in pet.
-                    System.out.println(pet.getEatProb());
-                    System.out.println(pet.getSeekAttProb());
-                    System.out.println(pet.getSleepProb());
+                    System.out.println(pet.act());
                 }
+                /*
+                 * Add code here to simulate a day in the life.
+                 */
             }
             // This choice will clear the ArrayList of pets
             if (userChoice == 6){
