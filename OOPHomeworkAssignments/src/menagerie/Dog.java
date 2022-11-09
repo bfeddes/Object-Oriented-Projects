@@ -11,7 +11,7 @@ public class Dog extends Pet {
     private int comfortedHuman;
     private int chewedUpShoe;
     private int ateHomework;
-    private Random rnd = new Random();
+    private Random rnd;
 
     public int getBiteProb() {
         return biteProb;
@@ -73,15 +73,16 @@ public class Dog extends Pet {
         public Dog(String name, int age, double weight) {
             super(name, age, weight);
             animalCutoffs();
+            rnd = new Random();
         }
     @Override
     public void animalCutoffs(){
-        setEatProb(24);
-        setSleepProb(24);
-        setSeekAttProb(24);
-        setAteHomework(9);
+        setEatProb(8);
+        setSleepProb(5);
+        setSeekAttProb(12);
+        setAteHomework(4);
         setChewedUpShoe(5);
-        setComfortedHuman(10);
+        setComfortedHuman(11);
         setBiteProb(1); 
     }
     @Override 
@@ -89,22 +90,22 @@ public class Dog extends Pet {
         String extraActivities = "";
         extraActivities = extraActivities.concat(super.act());
         if (chewedUpShoe()) { 
-            extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + " was bored and chewed up your new shoes.\n");
+            extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + ", was bored and chewed up your new shoes.\n");
         }
         if (ateHomework()) {
-            extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + " Ate your homework the night before it was due.\n");
+            extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + ", ate your homework the night before it was due.\n");
         }
         if (comfortedHuman()) {
-            extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + " Saw you were sad and comforted you.\n");
+            extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + ", saw you were sad and comforted you.\n");
         }
         if (biteHuman()) {
-            extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + " Playfully bit you.\n");
+            extraActivities = extraActivities.concat("The " + getAnimalType() + ", " + getName() + ", playfully bit you.\n");
         }
         return extraActivities;
     }
     @Override
     public String getAnimalType() {
-        return "Dog";
+        return "dog";
     }
     @Override
     public String toString() {
