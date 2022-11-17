@@ -1,7 +1,3 @@
-/*
- *
- *
-*/
 package muse;
 
 public Class ArtisticWorkWriter {
