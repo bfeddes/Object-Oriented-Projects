@@ -1,6 +1,12 @@
 package muse;
 
 public Class ArtisticWorkWriter {
-  // Add code
+  // Text writer
+  
+  // XML Writer
+  
+  // Binary Writer
+  
+  // Potentially JSON Writer
   
 }
