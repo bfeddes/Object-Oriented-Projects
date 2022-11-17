@@ -1,6 +1,12 @@
 package muse;
 
 public Class ArtisticWorkReader {
-  // Add code
+  // Text Reader
+  
+  // XML Reader
+  
+  // Binary Reader
+  
+  // Potentially JSON Reader
   
 }
