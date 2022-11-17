@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 public class App {
+    // NEED TO ADD COMMENTS
     public static void printHeading() {
         System.out.println("********************************************************************************");
         System.out.println("                        MUSE Social Media Platform, v1.0");
