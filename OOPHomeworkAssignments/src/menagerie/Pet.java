@@ -94,13 +94,13 @@ public abstract class Pet implements Comparable<Pet> {
     public String act() {
         String hourlyActivities = "";
         if (needsFood()){
-            hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getName() + " was hungry and ate.\n"); 
+            hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getName() + ", was hungry and ate.\n"); 
         } 
         if (needsAtt()){
-             hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getName() + " sought your attention.\n"); 
+             hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getName() + ", sought your attention.\n"); 
         }
         if (needsSleep()){
-            hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getName() + " was sleepy and took a nap.\n"); 
+            hourlyActivities = hourlyActivities.concat("The " + getAnimalType() + ", " + getName() + ", was sleepy and took a nap.\n"); 
         }
         return hourlyActivities;
     }
@@ -123,6 +123,7 @@ public abstract class Pet implements Comparable<Pet> {
     // toString method
     @Override
     public String toString() {
+        // Had to add some more room for names in case someone enters an excessively long name.
         return String.format("%s\t%d\t%.2f", name, age, weight);
     }
     // compareTo method
