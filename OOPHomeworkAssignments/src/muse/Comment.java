@@ -1,9 +1,11 @@
 package muse;
 
 public class Comment {
+    // Variables
     private String postedBy;
     private String dateTime;
     private String content;
+    // Getters and setters
     public String getPostedBy() {
         return postedBy;
     }
@@ -22,16 +24,19 @@ public class Comment {
     public void setContent(String content) {
         this.content = content;
     }
+    // Default constructor
     public Comment() {
         postedBy = "";
         dateTime = "";
         content = "";
     }
+    // Non-default constructor
     public Comment(String postedBy, String dateTime, String content) {
         setPostedBy(postedBy);
         setDateTime(dateTime);
         setContent(content);
     }
+    // Overriding toString function
     @Override
     public String toString() {
         return String.format("On %s, %s commented ...\n\t\"%s\"", dateTime, postedBy, content);
