@@ -1,6 +1,8 @@
 package muse;
 
-public class Comment {
+import java.io.Serializable;
+
+public class Comment implements Serializable{
     // Variables
     private String postedBy;
     private String dateTime;
