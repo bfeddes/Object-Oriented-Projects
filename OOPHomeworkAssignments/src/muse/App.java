@@ -19,7 +19,11 @@ public class App {
         System.out.println("\nWhat would you like to do?");
         System.out.println("1. Create a new post");
         System.out.println("2. Comment on a post");
-        System.out.println("3. Quit");
+        System.out.println("3. Read posts from a file");
+        System.out.println("4. Write posts to a file");
+        System.out.println("5. List all posts to screen");
+        System.out.println("6. Clear posts");
+        System.out.println("7. Quit");
         System.out.print("Enter the number of your choice: ");
     }
     // Method for printing new post options.
@@ -81,14 +85,13 @@ public class App {
         int choice, artType;
         Scanner sc = new Scanner(System.in);
         LinkedHashMap<String,String> responses;
-        ArrayList<ArtisticWork> sampleWorks = SampleArtisticWorks.generate();
-        ArrayList<ArtisticWork> works = sampleWorks;
+        ArrayList<ArtisticWork> works = SampleArtisticWorks.generate();
         Song song;
         Poem poem;
         ShortStory story;
         Movie movie;
         int workNum;
-        String commenterName, commenterDate, commentText;
+        String commenterName, commenterDate, commentText, decision;
         Comment comment;
         ArtisticWork theWork;  // the work chosen to comment on
 
@@ -131,6 +134,9 @@ public class App {
                 }
             } else if (choice == 2) { // Option for a user to add a comment to a post
                 listWorks(works);
+                if (works.isEmpty()){
+                    System.out.println("Nothing has been posted.");
+                } else {
                 System.out.print("Which one do you want to comment on? ");
                 workNum = sc.nextInt() - 1;
                 sc.nextLine();
@@ -147,8 +153,26 @@ public class App {
                 theWork.addComment(comment);
                 System.out.println("The new comment has been added. Here is the updated post:\n ");
                 System.out.println(theWork);
+                }
             }
-        } while (choice != 3);
+            else if (choice == 3) {
+                // ADD CODE TO READ POSTS FROM A FILE
+            }
+            else if (choice == 4) {
+                // ADD CODE TO WRITE POSTS TO A FILE
+            }
+            else if (choice == 5) {
+                // ADD CODE TO LIST ALL POSTS TO SCREEN
+            }
+            else if (choice == 6) {
+                System.out.print("Are you sure (y or n)? ");
+                decision = sc.next();
+                if (decision.equalsIgnoreCase("y")){
+                    System.out.println("All posts have been cleared.");
+                    works.clear();
+                }
+            }
+        } while (choice != 7);
         // Printing out the goodbye message
         System.out.println();
         System.out.println("Thank you for using MUSE. Be inspired to inspire everyone everywhere always.");
