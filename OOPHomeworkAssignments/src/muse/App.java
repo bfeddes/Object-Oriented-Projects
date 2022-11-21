@@ -90,8 +90,8 @@ public class App {
         Poem poem;
         ShortStory story;
         Movie movie;
-        int workNum;
-        String commenterName, commenterDate, commentText, decision;
+        int workNum, fileDecision;
+        String commenterName, commenterDate, commentText, decision, fileLocation;
         Comment comment;
         ArtisticWork theWork;  // the work chosen to comment on
 
@@ -155,11 +155,24 @@ public class App {
                 System.out.println(theWork);
                 }
             }
+            // Choice if the user wants to save the list to a file
             else if (choice == 3) {
                 // ADD CODE TO READ POSTS FROM A FILE
             }
             else if (choice == 4) {
-                // ADD CODE TO WRITE POSTS TO A FILE
+                System.out.println("What kind of file?");
+                System.out.println("1. Text\n2. Binary\n3. XML");
+                System.out.print("Enter the number of your choice: ");
+                fileDecision = sc.nextInt();
+                System.out.print("Enter name of file: ");
+                fileLocation = sc.nextLine();
+                if (fileDecision == 1) { // Will save the list as a txt file
+                    // Add code for TEXT
+                } else if (fileDecision == 2) { // Will save the list as a binary file
+                    // Add code for BINARY
+                } else if (fileDecision == 3) { // Will save the list as an XML file
+                    // Add code for XML
+                }
             }
             else if (choice == 5) {
                 // ADD CODE TO LIST ALL POSTS TO SCREEN
