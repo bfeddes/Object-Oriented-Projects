@@ -1,6 +1,6 @@
 package muse;
 
-public Class ArtisticWorkReader {
+public class ArtisticWorkReader {
   // Text Reader
   
   // XML Reader

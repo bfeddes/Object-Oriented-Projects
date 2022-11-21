@@ -1,6 +1,6 @@
 package muse;
 
-public Class ArtisticWorkWriter {
+public class ArtisticWorkWriter {
   // Text writer
   
   // XML Writer
