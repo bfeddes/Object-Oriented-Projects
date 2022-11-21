@@ -1,7 +1,8 @@
 package muse;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-    public class SampleArtisticWorks {
+    public class SampleArtisticWorks implements Serializable {
         // generate method
         public static ArrayList<ArtisticWork> generate() {
             // Variables
