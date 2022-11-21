@@ -81,7 +81,8 @@ public class App {
         int choice, artType;
         Scanner sc = new Scanner(System.in);
         LinkedHashMap<String,String> responses;
-        ArrayList<ArtisticWork> works = new ArrayList<ArtisticWork>();
+        ArrayList<ArtisticWork> sampleWorks = SampleArtisticWorks.generate();
+        ArrayList<ArtisticWork> works = sampleWorks;
         Song song;
         Poem poem;
         ShortStory story;
@@ -90,6 +91,7 @@ public class App {
         String commenterName, commenterDate, commentText;
         Comment comment;
         ArtisticWork theWork;  // the work chosen to comment on
+
         // Do loop while the user's choice is not quit
         do {
             showMainMenu();
