@@ -114,7 +114,7 @@ public class App {
                     responses.put("resolution", sc.nextLine());
                     movie = new Movie(responses);
                     works.add(movie);
-                } else if (artType == 3) { // Option for a user to creaete a new poem post
+                } else if (artType == 3) { // Option for a user to create a new poem post
                     responses = getCommonWrittenInputs(sc);
                     System.out.print("Enter meter: ");
                     responses.put("meter",sc.nextLine());
