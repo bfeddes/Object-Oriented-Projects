@@ -20,7 +20,5 @@ public class ArtisticWorkWriter {
         return false;
     }
 }
-  
   // Potentially JSON Writer
-  
 }
