@@ -164,12 +164,17 @@ public class App {
                 System.out.println("1. Text\n2. Binary\n3. XML");
                 System.out.print("Enter the number of your choice: ");
                 fileDecision = sc.nextInt();
-                System.out.print("Enter name of file: ");
-                fileLocation = sc.nextLine();
                 if (fileDecision == 1) { // Will save the list as a txt file
                     // Add code for TEXT
                 } else if (fileDecision == 2) { // Will save the list as a binary file
-                    // Add code for BINARY
+                    System.out.print("Enter name of file: ");
+                    sc.nextLine();
+                    fileLocation = sc.nextLine();
+                    if (ArtisticWorkWriter.writeToBinary(works, fileLocation)){
+                        System.out.println("The posts were successfully written.");
+                    } else {
+                        System.out.println("Could not write posts to a file.");
+                    }
                 } else if (fileDecision == 3) { // Will save the list as an XML file
                     // Add code for XML
                 }
