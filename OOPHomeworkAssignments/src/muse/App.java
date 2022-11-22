@@ -174,10 +174,17 @@ public class App {
                     } catch (Exception ex) {
                         System.out.println("Failed to read posts from file.");
                     }
-
                 }
                 else if (fileReadDecision == 3) {
-                    // ADD CODE FOR XML
+                    try{
+                        System.out.print("Enter name of file: ");
+                        sc.nextLine();
+                        fileReadLocation = sc.nextLine();
+                        works = ArtisticWorkReader.readFromXML(fileReadLocation);
+                        System.out.println("The posts were read from the file.");
+                    } catch (Exception ex) {
+                        System.out.println("Failed to read posts from file.");
+                    }
                 }
             }
             else if (choice == 4) {
@@ -191,13 +198,20 @@ public class App {
                     System.out.print("Enter name of file: ");
                     sc.nextLine();
                     fileWriteLocation = sc.nextLine();
-                    if (ArtisticWorkWriter.writeToBinary(works, fileWriteLocation)){
+                    if (ArtisticWorkWriter.writeToBinary(works, fileWriteLocation)) {
                         System.out.println("The posts were successfully written.");
                     } else {
                         System.out.println("Could not write posts to a file.");
                     }
                 } else if (fileWriteDecision == 3) { // Will save the list as an XML file
-                    // Add code for XML
+                    System.out.print("Enter name of file: ");
+                    sc.nextLine();
+                    fileWriteLocation = sc.nextLine();
+                    if (ArtisticWorkWriter.writeToXML(works, fileWriteLocation)) {
+                        System.out.println("The posts were successfully written.");
+                    } else {
+                        System.out.println("Could not write posts to a file.");
+                    }
                 }
             }
             else if (choice == 5) {
