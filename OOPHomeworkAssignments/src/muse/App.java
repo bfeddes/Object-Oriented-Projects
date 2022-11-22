@@ -90,8 +90,8 @@ public class App {
         Poem poem;
         ShortStory story;
         Movie movie;
-        int workNum, fileDecision;
-        String commenterName, commenterDate, commentText, decision, fileLocation;
+        int workNum, fileWriteDecision, fileReadDecision;
+        String commenterName, commenterDate, commentText, decision, fileWriteLocation, fileReadLocation;
         Comment comment;
         ArtisticWork theWork;  // the work chosen to comment on
 
@@ -157,25 +157,46 @@ public class App {
             }
             // Choice if the user wants to save the list to a file
             else if (choice == 3) {
-                // ADD CODE TO READ POSTS FROM A FILE
+                System.out.println("What kind of file?");
+                System.out.println("1. Text\n2. Binary\n3. XML");
+                System.out.print("Enter the number of your choice: ");
+                fileReadDecision = sc.nextInt();
+                if (fileReadDecision == 1) {
+                    // ADD CODE FOR TEXT
+                }
+                else if (fileReadDecision == 2) {
+                    try{
+                        System.out.print("Enter name of file: ");
+                        sc.nextLine();
+                        fileReadLocation = sc.nextLine();
+                        works = ArtisticWorkReader.readFromBinary(fileReadLocation);
+                        System.out.println("The posts were read from the file.");
+                    } catch (Exception ex) {
+                        System.out.println("Failed to read posts from file.");
+                    }
+
+                }
+                else if (fileReadDecision == 3) {
+                    // ADD CODE FOR XML
+                }
             }
             else if (choice == 4) {
                 System.out.println("What kind of file?");
                 System.out.println("1. Text\n2. Binary\n3. XML");
                 System.out.print("Enter the number of your choice: ");
-                fileDecision = sc.nextInt();
-                if (fileDecision == 1) { // Will save the list as a txt file
+                fileWriteDecision = sc.nextInt();
+                if (fileWriteDecision == 1) { // Will save the list as a txt file
                     // Add code for TEXT
-                } else if (fileDecision == 2) { // Will save the list as a binary file
+                } else if (fileWriteDecision == 2) { // Will save the list as a binary file
                     System.out.print("Enter name of file: ");
                     sc.nextLine();
-                    fileLocation = sc.nextLine();
-                    if (ArtisticWorkWriter.writeToBinary(works, fileLocation)){
+                    fileWriteLocation = sc.nextLine();
+                    if (ArtisticWorkWriter.writeToBinary(works, fileWriteLocation)){
                         System.out.println("The posts were successfully written.");
                     } else {
                         System.out.println("Could not write posts to a file.");
                     }
-                } else if (fileDecision == 3) { // Will save the list as an XML file
+                } else if (fileWriteDecision == 3) { // Will save the list as an XML file
                     // Add code for XML
                 }
             }
