@@ -9,7 +9,7 @@ import java.io.File;
 
 public class ArtisticWorkWriter {
 
-    // ADD TEXT WRITER
+    // ADD TEXT WRITE
 
     // Method for writing to XML
     public static boolean writeToXML(ArrayList<ArtisticWork> artWorks, String fileName) {
