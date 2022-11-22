@@ -215,7 +215,10 @@ public class App {
                 }
             }
             else if (choice == 5) {
-                // ADD CODE TO LIST ALL POSTS TO SCREEN
+                System.out.println("\nHere is a detailed list of al the posts:\n");
+                for (ArtisticWork post : works) {
+                    System.out.println(post);
+                }
             }
             else if (choice == 6) {
                 System.out.print("Are you sure (y or n)? ");
