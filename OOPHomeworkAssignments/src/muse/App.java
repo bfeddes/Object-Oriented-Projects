@@ -215,7 +215,7 @@ public class App {
                 }
             }
             else if (choice == 5) {
-                System.out.println("\nHere is a detailed list of al the posts:\n");
+                System.out.println("\nHere is a detailed list of all the posts:\n");
                 for (ArtisticWork post : works) {
                     System.out.println(post);
                 }
