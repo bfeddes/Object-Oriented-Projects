@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 @SuppressWarnings("unchecked") // I got annoyed by the warning that casting it as an ArrayList of ArtisticWorks give, so I added this in.
 public class ArtisticWorkReader {
 
@@ -20,7 +21,21 @@ public class ArtisticWorkReader {
         }
     }
 
-    // CODE FOR TEXT
+    public static ArrayList<ArtisticWork> readFromText(String fileName) {
+        try {
+            ArrayList<ArtisticWork> artWorks = new ArrayList<ArtisticWork>();
+            Scanner fsc = new Scanner(new File(fileName));
+            String line;
+            String[] parts;
+            while (fsc.hasNextLine()) {
+                line = fsc.nextLine().trim();
+            }
+            fsc.close();
+            return artWorks;
+        } catch (Exception ex) {
+            return null;
+        }
+    }
 
     // Method for reading a binary file
     public static ArrayList<ArtisticWork> readFromBinary (String fileName) {
