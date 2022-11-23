@@ -10,6 +10,12 @@ public abstract class ArtisticWork implements Serializable {
     private String description;
     private ArrayList<Comment> comments;
     // Getters and setters
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
     public String getCreator() {
         return creator;
     }
