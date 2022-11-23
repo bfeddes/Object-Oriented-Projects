@@ -1,15 +1,30 @@
 package muse;
 
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.beans.XMLEncoder;
 import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.File;
 
 public class ArtisticWorkWriter {
 
-    // ADD TEXT WRITE
+    // Method for writing to .txt
+    public static boolean writeToText(ArrayList<ArtisticWork> artWorks, String fileName) {
+        try {
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File(fileName))));
+            for (ArtisticWork work : artWorks) {
+                pw.println(work);
+            }
+            pw.close();
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
 
     // Method for writing to XML
     public static boolean writeToXML(ArrayList<ArtisticWork> artWorks, String fileName) {
