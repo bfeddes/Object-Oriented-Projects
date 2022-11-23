@@ -155,16 +155,24 @@ public class App {
                 System.out.println(theWork);
                 }
             }
-            // Choice if the user wants to save the list to a file
+            // Choice if the user wants to read from a file
             else if (choice == 3) {
                 System.out.println("What kind of file?");
                 System.out.println("1. Text\n2. Binary\n3. XML");
                 System.out.print("Enter the number of your choice: ");
                 fileReadDecision = sc.nextInt();
-                if (fileReadDecision == 1) {
-                    // ADD CODE FOR TEXT
+                if (fileReadDecision == 1) { // COME BACK TO HERE
+                    try{
+                        System.out.print("Enter name of file: ");
+                        sc.nextLine();
+                        fileReadLocation = sc.nextLine();
+                        works = ArtisticWorkReader.readFromText(fileReadLocation);
+                        System.out.println("The posts were read from the file.");
+                    } catch (Exception ex) {
+                        System.out.println("Failed to read posts from file.");
+                    }
                 }
-                else if (fileReadDecision == 2) {
+                else if (fileReadDecision == 2) { 
                     try{
                         System.out.print("Enter name of file: ");
                         sc.nextLine();
@@ -187,13 +195,20 @@ public class App {
                     }
                 }
             }
-            else if (choice == 4) {
+            else if (choice == 4) { // Options for if a user wants to write to a file
                 System.out.println("What kind of file?");
                 System.out.println("1. Text\n2. Binary\n3. XML");
                 System.out.print("Enter the number of your choice: ");
                 fileWriteDecision = sc.nextInt();
                 if (fileWriteDecision == 1) { // Will save the list as a txt file
-                    // Add code for TEXT
+                    System.out.print("Enter name of file: ");
+                    sc.nextLine();
+                    fileWriteLocation = sc.nextLine();
+                    if (ArtisticWorkWriter.writeToText(works, fileWriteLocation)) {
+                        System.out.println("The posts were successfully written.");
+                    } else {
+                        System.out.println("Could not write posts to a file.");
+                    }
                 } else if (fileWriteDecision == 2) { // Will save the list as a binary file
                     System.out.print("Enter name of file: ");
                     sc.nextLine();
