@@ -62,6 +62,7 @@ public abstract class ArtisticWork implements Serializable {
     }
     // Abstract getType method which will be overriden in subclasses to get the type
     public abstract String getType();
+    // Method for print out general information on a post
     public String getGeneralInfoString() {
         return String.format("%s, a %s by %s, posted on %s",title,getType(),creator,date);
     }
@@ -88,12 +89,14 @@ public abstract class ArtisticWork implements Serializable {
         Comment comment = new Comment(postedBy, date, content);
         comments.add(comment);
     }
-    // This method seems redundant to the one above. Not positive of its purpose
     public void addComment(Comment comment) {
         comments.add(comment);
     }
     // Method for printing out a post's title, type, and who created the post
     public String getShortString() {
         return String.format("\"%s\", a %s by %s", title, getType(), creator);
+    }
+    public String toTabDelimitedString() {
+        return getGeneralInfoString() + "\n\t" + getSpecificInfoString() + "\n\tComments: \n" + getCommentsAsString();
     }
 }
