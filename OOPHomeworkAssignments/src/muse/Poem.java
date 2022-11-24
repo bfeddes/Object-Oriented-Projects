@@ -16,8 +16,7 @@ public class Poem extends WrittenArtisticWork {
         meter = "N/A";
     }
     // Non-default constructor
-    public Poem(String creator, String date, String title, String description,
-            String language, String text, String meter) {
+    public Poem(String creator, String date, String title, String description, String language, String text, String meter) {
         super(creator,date,title,description,language,text);
         setMeter(meter);
     }
@@ -34,6 +33,10 @@ public class Poem extends WrittenArtisticWork {
     // Overriding the specific info for poems
     @Override
     public String getSpecificInfoString() {
-        return String.format("Meter: %s\n%s", meter, super.getSpecificInfoString());
+        return String.format("Meter: %s\n%s",meter, super.getSpecificInfoString());
+    }
+    @Override
+    public String toTabDelimitedString() {
+        return String.format("%s\t%s", super.toTabDelimitedString(), meter);
     }
 }

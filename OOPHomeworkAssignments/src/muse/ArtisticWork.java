@@ -79,6 +79,16 @@ public abstract class ArtisticWork implements Serializable {
         }
         return result;
     }
+    public String getCommentsAsTabDelimited() {
+        String result = "";
+        for (Comment comment : comments) {
+            result = result + comment.toTabDelimitedString() + "\t";
+        }
+        if (result.isBlank()) {
+            return "No comments";
+        }
+        return result;
+    }
     // Overriding the toString function
     @Override
     public String toString() {
@@ -97,6 +107,6 @@ public abstract class ArtisticWork implements Serializable {
         return String.format("\"%s\", a %s by %s", title, getType(), creator);
     }
     public String toTabDelimitedString() {
-        return getGeneralInfoString() + "\n\t" + getSpecificInfoString() + "\n\tComments: \n" + getCommentsAsString();
+        return  String.format("%s\t%s\t%s\t%s\t%s",title,getType(),creator,date,description);
     }
 }

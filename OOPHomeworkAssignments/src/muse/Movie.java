@@ -27,8 +27,7 @@ public class Movie extends RecordedArtisticWork {
         resolution = "720p";
     }
     // Non-default constructor
-    public Movie(String creator, String date, String title, String description,
-            int duration, String fileName, double fileSize, int frameRate, String resolution) {
+    public Movie(String creator, String date, String title, String description, int duration, String fileName, double fileSize, int frameRate, String resolution) {
         super(creator,date,title,description,duration,fileName,fileSize);
         setFrameRate(frameRate);
         setResolution(resolution);
@@ -48,5 +47,9 @@ public class Movie extends RecordedArtisticWork {
     @Override
     public String getSpecificInfoString() {
         return String.format("filmed with %s resolution at %d frames per second", resolution, frameRate);
+    }
+    @Override
+    public String toTabDelimitedString() {
+        return String.format("%s\t%s\t%d", super.toTabDelimitedString(),resolution, frameRate);
     }
 }
