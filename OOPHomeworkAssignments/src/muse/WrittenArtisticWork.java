@@ -24,8 +24,7 @@ public abstract class WrittenArtisticWork extends ArtisticWork {
         text = "This is the text of the written work.";
     }
     // Non-default constructor
-    public WrittenArtisticWork(String creator, String date, String title, String description,
-            String language, String text) {
+    public WrittenArtisticWork(String creator, String date, String title, String description, String language, String text) {
         super(creator,date,title,description);
         setLanguage(language);
         setText(text);
@@ -45,5 +44,9 @@ public abstract class WrittenArtisticWork extends ArtisticWork {
     @Override
     public String getSpecificInfoString() {
         return text;
+    }
+    @Override
+    public String toTabDelimitedString() {
+        return String.format("%s\t%s\t%s", super.toTabDelimitedString(), language, text);
     }
 }
