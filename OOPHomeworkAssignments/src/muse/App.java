@@ -197,7 +197,7 @@ public class App {
             }
             else if (choice == 4) { // Options for if a user wants to write to a file
                 System.out.println("What kind of file?");
-                System.out.println("1. Text\n2. Binary\n3. XML");
+                System.out.println("1. Text\n2. Binary\n3. XML\n4. JSON");
                 System.out.print("Enter the number of your choice: ");
                 fileWriteDecision = sc.nextInt();
                 if (fileWriteDecision == 1) { // Will save the list as a txt file
@@ -223,6 +223,15 @@ public class App {
                     sc.nextLine();
                     fileWriteLocation = sc.nextLine();
                     if (ArtisticWorkWriter.writeToXML(works, fileWriteLocation)) {
+                        System.out.println("The posts were successfully written.");
+                    } else {
+                        System.out.println("Could not write posts to a file.");
+                    }
+                } else if (fileWriteDecision == 4) { // Will save the list as an XML file
+                    System.out.print("Enter name of file: ");
+                    sc.nextLine();
+                    fileWriteLocation = sc.nextLine();
+                    if (ArtisticWorkWriter.writeToJSON(works, fileWriteLocation)) {
                         System.out.println("The posts were successfully written.");
                     } else {
                         System.out.println("Could not write posts to a file.");
