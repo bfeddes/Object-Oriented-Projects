@@ -31,7 +31,7 @@ public class ArtisticWorkReader {
         try {
             ArrayList<ArtisticWork> artWorks = new ArrayList<ArtisticWork>();
             Scanner fsc = new Scanner(new File(fileName));
-            String line,title,artType,creator,date,description,fName, key, resoulution, language, text, meter, setting;
+            String line,title,artType,creator,date,description,fName, key, resoulution, language, text, meter, setting, commentDate, commentName, commentDesc;
             String[] parts;
             int duration, bpm, frameRate;
             double fileSize;
@@ -39,6 +39,7 @@ public class ArtisticWorkReader {
             Movie movie;
             Poem poem;
             ShortStory shortStory;
+            Comment comment;
             while (fsc.hasNextLine()) {
                 line = fsc.nextLine().trim();
                 parts = line.split("\t");
@@ -55,6 +56,13 @@ public class ArtisticWorkReader {
                     key = parts[9];
                     song = new Song(creator, date, title, description, duration, fName, fileSize, bpm, key);
                     artWorks.add(song);
+                    for (int i = 10; i < parts.length; i+=3 ){
+                        commentDate = parts[i];
+                        commentName = parts[i+1];
+                        commentDesc = parts[i+2];
+                        comment = new Comment(commentName, commentDate, commentDesc);
+                        
+                    }
                 }
                 else if (artType.equalsIgnoreCase("Movie")){
                     duration = Integer.parseInt(parts[5]);
