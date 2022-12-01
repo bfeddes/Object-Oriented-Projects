@@ -56,7 +56,10 @@ public abstract class RecordedArtisticWork extends ArtisticWork {
     // Overriding the information
     @Override
     public String getGeneralInfoString() {
-        return String.format("%s\nDuration: %d sec; Filename: %s (%.2f MB)", super.getGeneralInfoString(),
-                duration, fileName, fileSize);
+        return String.format("%s\nDuration: %d sec; Filename: %s (%.2f MB)", super.getGeneralInfoString(),duration, fileName, fileSize);
+    }
+    @Override
+    public String toTabDelimitedString() {
+        return String.format("%s\t%d\t%s\t%.2f", super.toTabDelimitedString(),duration,fileName,fileSize);
     }
 }

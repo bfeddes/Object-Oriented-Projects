@@ -90,11 +90,10 @@ public class App {
         Poem poem;
         ShortStory story;
         Movie movie;
-        int workNum, fileDecision;
-        String commenterName, commenterDate, commentText, decision, fileLocation;
+        int workNum, fileWriteDecision, fileReadDecision;
+        String commenterName, commenterDate, commentText, decision, fileWriteLocation, fileReadLocation;
         Comment comment;
         ArtisticWork theWork;  // the work chosen to comment on
-
         // Do loop while the user's choice is not quit
         do {
             showMainMenu();
@@ -155,34 +154,87 @@ public class App {
                 System.out.println(theWork);
                 }
             }
-            // Choice if the user wants to save the list to a file
+            // Choice if the user wants to read from a file
             else if (choice == 3) {
-                // ADD CODE TO READ POSTS FROM A FILE
-            }
-            else if (choice == 4) {
                 System.out.println("What kind of file?");
                 System.out.println("1. Text\n2. Binary\n3. XML");
                 System.out.print("Enter the number of your choice: ");
-                fileDecision = sc.nextInt();
-                if (fileDecision == 1) { // Will save the list as a txt file
-                    // Add code for TEXT
-                } else if (fileDecision == 2) { // Will save the list as a binary file
+                fileReadDecision = sc.nextInt();
+                if (fileReadDecision == 1) { // Option for reading from a text file
+                        System.out.print("Enter name of file: ");
+                        sc.nextLine();
+                        fileReadLocation = sc.nextLine();
+                        works = ArtisticWorkReader.readFromText(fileReadLocation);
+                        if (works != null) {
+                            System.out.println("The posts were read from the file.");
+                        } else {
+                        System.out.println("Failed to read posts from file.");
+                        }
+                }
+                else if (fileReadDecision == 2) { // Option for reading from a Binary file
+                        System.out.print("Enter name of file: ");
+                        sc.nextLine();
+                        fileReadLocation = sc.nextLine();
+                        works = ArtisticWorkReader.readFromBinary(fileReadLocation);
+                        if (works != null) {
+                            System.out.println("The posts were read from the file.");
+                        } else {
+                        System.out.println("Failed to read posts from file.");
+                        }
+                }
+                else if (fileReadDecision == 3) { // Option for reading from an XML file
                     System.out.print("Enter name of file: ");
                     sc.nextLine();
-                    fileLocation = sc.nextLine();
-                    if (ArtisticWorkWriter.writeToBinary(works, fileLocation)){
+                    fileReadLocation = sc.nextLine();
+                    works = ArtisticWorkReader.readFromXML(fileReadLocation);
+                    if (works != null) {
+                        System.out.println("The posts were read from the file.");
+                    } else {
+                    System.out.println("Failed to read posts from file.");
+                    }
+                }
+            }
+            else if (choice == 4) { // Options for if a user wants to write to a file
+                System.out.println("What kind of file?");
+                System.out.println("1. Text\n2. Binary\n3. XML");
+                System.out.print("Enter the number of your choice: ");
+                fileWriteDecision = sc.nextInt();
+                if (fileWriteDecision == 1) { // Will save the list as a txt file
+                    System.out.print("Enter name of file: ");
+                    sc.nextLine();
+                    fileWriteLocation = sc.nextLine();
+                    if (ArtisticWorkWriter.writeToText(works, fileWriteLocation)) {
                         System.out.println("The posts were successfully written.");
                     } else {
                         System.out.println("Could not write posts to a file.");
                     }
-                } else if (fileDecision == 3) { // Will save the list as an XML file
-                    // Add code for XML
+                } else if (fileWriteDecision == 2) { // Will save the list as a binary file
+                    System.out.print("Enter name of file: ");
+                    sc.nextLine();
+                    fileWriteLocation = sc.nextLine();
+                    if (ArtisticWorkWriter.writeToBinary(works, fileWriteLocation)) {
+                        System.out.println("The posts were successfully written.");
+                    } else {
+                        System.out.println("Could not write posts to a file.");
+                    }
+                } else if (fileWriteDecision == 3) { // Will save the list as an XML file
+                    System.out.print("Enter name of file: ");
+                    sc.nextLine();
+                    fileWriteLocation = sc.nextLine();
+                    if (ArtisticWorkWriter.writeToXML(works, fileWriteLocation)) {
+                        System.out.println("The posts were successfully written.");
+                    } else {
+                        System.out.println("Could not write posts to a file.");
+                    }
                 }
             }
-            else if (choice == 5) {
-                // ADD CODE TO LIST ALL POSTS TO SCREEN
+            else if (choice == 5) { // Will give a detailed list of all posts currently in the works array
+                System.out.println("\nHere is a detailed list of all the posts:\n");
+                for (ArtisticWork post : works) {
+                    System.out.println(post);
+                }
             }
-            else if (choice == 6) {
+            else if (choice == 6) { // Allows the user to clear posts
                 System.out.print("Are you sure (y or n)? ");
                 decision = sc.next();
                 if (decision.equalsIgnoreCase("y")){
@@ -190,9 +242,8 @@ public class App {
                     works.clear();
                 }
             }
-        } while (choice != 7);
+        } while (choice != 7); // Exits the program
         // Printing out the goodbye message
-        System.out.println();
-        System.out.println("Thank you for using MUSE. Be inspired to inspire everyone everywhere always.");
+        System.out.println("\nThank you for using MUSE. Be inspired to inspire everyone everywhere always.");
     }
 }

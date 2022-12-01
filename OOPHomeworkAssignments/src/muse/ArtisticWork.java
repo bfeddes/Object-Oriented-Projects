@@ -10,6 +10,12 @@ public abstract class ArtisticWork implements Serializable {
     private String description;
     private ArrayList<Comment> comments;
     // Getters and setters
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
     public String getCreator() {
         return creator;
     }
@@ -56,6 +62,7 @@ public abstract class ArtisticWork implements Serializable {
     }
     // Abstract getType method which will be overriden in subclasses to get the type
     public abstract String getType();
+    // Method for print out general information on a post
     public String getGeneralInfoString() {
         return String.format("%s, a %s by %s, posted on %s",title,getType(),creator,date);
     }
@@ -72,22 +79,36 @@ public abstract class ArtisticWork implements Serializable {
         }
         return result;
     }
+    // Gets comments as tab delimited so I can write them to a file in that format
+    public String getCommentsAsTabDelimited() {
+        String result = "";
+        for (Comment comment : comments) {
+            result = result + comment.toTabDelimitedString() + "\t";
+        }
+        if (result.isBlank()) {
+            return "No comments";
+        }
+        return result;
+    }
     // Overriding the toString function
     @Override
     public String toString() {
-        return getGeneralInfoString() + "\n" + getSpecificInfoString() + "\nComments: \n" + getCommentsAsString();
+        return getGeneralInfoString() + "\n" + getSpecificInfoString() + "\nComments: \n" + getCommentsAsString() + "\n";
     }
     // Method for adding a comment to a post
     public void addComment(String postedBy, String date, String content) {
         Comment comment = new Comment(postedBy, date, content);
         comments.add(comment);
     }
-    // This method seems redundant to the one above. Not positive of its purpose
     public void addComment(Comment comment) {
         comments.add(comment);
     }
     // Method for printing out a post's title, type, and who created the post
     public String getShortString() {
         return String.format("\"%s\", a %s by %s", title, getType(), creator);
+    }
+    // Gets the data into tab-delimited format so I can write it to a text file in that format
+    public String toTabDelimitedString() {
+        return  String.format("%s\t%s\t%s\t%s\t%s",title,getType(),creator,date,description);
     }
 }

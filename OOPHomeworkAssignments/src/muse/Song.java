@@ -27,8 +27,7 @@ public class Song extends RecordedArtisticWork {
         bpm = 120;
     }
     // Non-default constructor
-    public Song(String creator, String date, String title, String description,
-            int duration, String fileName, double fileSize, int bpm, String key) {
+    public Song(String creator, String date, String title, String description,int duration, String fileName, double fileSize, int bpm, String key) {
         super(creator,date,title,description,duration,fileName,fileSize);
         setBPM(bpm);
         setKey(key);
@@ -48,5 +47,9 @@ public class Song extends RecordedArtisticWork {
     @Override
     public String getSpecificInfoString() {
         return String.format("%d bpm, key of %s", bpm,key);
+    }
+    @Override
+    public String toTabDelimitedString() {
+        return String.format("%s\t%d\t%s", super.toTabDelimitedString(),bpm, key);
     }
 }
