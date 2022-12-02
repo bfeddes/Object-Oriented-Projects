@@ -1,20 +1,23 @@
 package quizzy;
 /****QUESTION ANSWERS*****
- * 1.
- * 2.
- * 3.
- * 4.
- * 5.
- * 6.
- * 7.
- * 8.
- * 9.
- * 10.
- * 11.
- * 12.
- * 13.
- * 14.
+ * 1. (c)
+ * 2. (c)
+ * 3. (b)
+ * 4. (b)
+ * 5. (b)
+ * 6. (d)
+ * 7. (c)
+ * 8. (a)
+ * 9. (c)
+ * 10. (b)
+ * 11. (a)
+ * 12. (c)
+ * 13. (d)
+ * 14. (a)
  */
 public class App {
+    public static void main(String[] args) {
+        
+    }
     
 }
