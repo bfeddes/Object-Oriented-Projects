@@ -17,7 +17,8 @@ package quizzy;
  */
 public class App {
     public static void main(String[] args) {
-        
+        Question question = new Question();
+        QuizFrame frm = new QuizFrame(question);
+        frm.setVisible(true);
     }
-    
 }
