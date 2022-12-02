@@ -46,7 +46,7 @@ public class Question {
     }
     
     // Constructor 
-    public Question(String question, String a, String b, String c, String d, String answer) {
+    public Question() {
         setQuestion(question);
         setA(answer);
         setB(b);
