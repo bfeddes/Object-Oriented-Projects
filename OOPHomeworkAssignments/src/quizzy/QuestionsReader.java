@@ -24,7 +24,8 @@ public class QuestionsReader {
                     optB = parts[2];
                     optC = parts[3]; 
                     answer = parts[4];
-                    optD = "";
+                    question = new Question(questionText, answer, optA, optB, optC);
+                    questions.add(question);
                 } else {            
                     questionText = parts[0];
                     optA = parts[1];
@@ -32,9 +33,9 @@ public class QuestionsReader {
                     optC = parts[3]; 
                     optD = parts[4];
                     answer = parts[5];
+                    question = new Question(questionText, answer, optA, optB, optC, optD);
+                    questions.add(question);
                 }
-                question = new Question(questionText, answer, optA, optB, optC, optD);
-                questions.add(question);
             }
             fsc.close();
             return questions;
