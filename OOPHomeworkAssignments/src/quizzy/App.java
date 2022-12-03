@@ -15,6 +15,7 @@ package quizzy;
  * 13. (d)
  * 14. (a)
  */
+import java.util.ArrayList;
 public class App {
     public static void main(String[] args) {
         Question question = new Question();
