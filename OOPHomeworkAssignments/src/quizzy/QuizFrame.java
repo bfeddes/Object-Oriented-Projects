@@ -3,21 +3,30 @@ package quizzy;
 import java.awt.Container;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import javax.swing.JOptionPane;
-import java.awt.Graphics;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
+import java.util.Random;
 
 public class QuizFrame extends JFrame{
     // Variables 
-    private Question question;
+    private Question question, askedQuestion;
+    private ArrayList<Question> questionList;
+    private JTextArea tarQuestion;
+    private Random rnd = new Random();
+    private int questionsAsked;
+    private int questionsCorrect;
 
     // setupMenu method 
     public void setupMenu() {
@@ -36,14 +45,25 @@ public class QuizFrame extends JFrame{
         menuFile.add(exitApp);
         menuQuiz.add(quizStart);
         menuQuiz.add(quizStop);
-        exitApp.addActionListener(
+
+        // Action listeners
+        quizStart.addActionListener( // Starting quiz
             new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
+                public void actionPerformed (ActionEvent e) {
+                    question = questionList.get(rnd.nextInt(14));
+                    tarQuestion.setText(question.toString());
+                    repaint();
+                }
+            }
+        );
+        exitApp.addActionListener( // Exiting app
+            new ActionListener() {
+                public void actionPerformed (ActionEvent e) {
                     System.exit(0);
                 }
             }
         );
-        menuFile.add(fileLoad);
+        menuFile.add(fileLoad); // Loading the file of questions
         fileLoad.addActionListener(
             new ActionListener() {
                 public void actionPerformed (ActionEvent e) {
@@ -52,15 +72,17 @@ public class QuizFrame extends JFrame{
                     if (fileChoice.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                         fileName = fileChoice.getSelectedFile();
                         if (QuestionsReader.readFromTextFile(fileName, question) != null) {
+                            questionList = QuestionsReader.readFromTextFile(fileName, question);
+                            tarQuestion.setText("The questions have been read. Select Quiz >> Start to begin. ");
                             repaint();
                         } else {
-                            JOptionPane.showMessageDialog(null, "Could not read question.");
+                            tarQuestion.setText("The questions could not be read. Please try again.");
+                            repaint();
                         }
                     }
                 }
             }
         );
-        menuFile.add(fileLoad);
     }
     // setupGUI method 
     public void setupGUI() {
@@ -69,9 +91,22 @@ public class QuizFrame extends JFrame{
         setupMenu();
         Container c = getContentPane();
         c.setLayout(new BorderLayout());
-        JTextArea welcomeMessage = new JTextArea("Welcome to Quizzy, the object-oriented programming quiz tool.\nSelect File >> Load Questions to begin.");
-        welcomeMessage.setEditable(false);
-        c.add(welcomeMessage);
+        tarQuestion = new JTextArea("Welcome to Quizzy, the object-oriented programming quiz tool.\nSelect File >> Load Questions to begin.");
+        tarQuestion.setEditable(false);
+        c.add(tarQuestion);
+        JPanel panSouth = new JPanel();
+        panSouth.setLayout(new FlowLayout());
+        JLabel yourAnswer = new JLabel("Your answer: ");
+        JTextField txtAnswer = new JTextField(3);
+        JButton btnSubmit = new JButton("Submit Answer");
+        JButton btnNext = new JButton("Next question");
+        btnSubmit.setEnabled(false);
+        btnNext.setEnabled(false);
+        panSouth.add(yourAnswer);
+        panSouth.add(txtAnswer);
+        panSouth.add(btnSubmit);
+        panSouth.add(btnNext);
+        c.add(panSouth,BorderLayout.SOUTH);
     }
     // Constructor
     public QuizFrame(Question question) {
