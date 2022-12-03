@@ -4,14 +4,17 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class QuestionsReader {
-    public static ArrayList<Question> readFromTextFile(String fileName) {
+    public static ArrayList<Question> readFromTextFile(String fileName, Question question) {
+        return readFromTextFile(new File(fileName), question);
+    }
+    
+    public static ArrayList<Question> readFromTextFile(File fileName, Question question) {
         try {
             ArrayList<Question> questions = new ArrayList<Question>();
-            Scanner fsc = new Scanner(new File(fileName));
+            Scanner fsc = new Scanner(fileName);
             String line; 
             String[] parts; 
             String questionText, answer, optA, optB, optC, optD;
-            Question question;
             while (fsc.hasNextLine()) {
                 line = fsc.nextLine().trim();
                 parts = line.split("\t");
