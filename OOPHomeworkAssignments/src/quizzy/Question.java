@@ -62,9 +62,20 @@ public class Question {
         setC(c);
         setD(d);
     }
+    public Question(String question, String answer, String a, String b, String c) {
+        setQuestion(question);
+        setAnswer(answer);
+        setA(a);
+        setB(b);
+        setC(c);
+    }
     // Overriding the toString method 
     @Override 
     public String toString() {
-        return String.format("%s\n\t%s\n\t%s\n\t%s\n\t%s", question, a, b, c, d);
+        if (getD() != null) {
+            return String.format("%s\nA.\t%s\nB.\t%s\nC.\t%s\nD.\t%s", question, a, b, c, d);
+        } else {
+            return String.format("%s\nA.\t%s\nB.\t%s\nC.\t%s", question, a, b, c);
+        }
     }
 }
