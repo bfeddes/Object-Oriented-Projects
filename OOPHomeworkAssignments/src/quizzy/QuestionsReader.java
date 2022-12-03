@@ -1,5 +1,43 @@
 package quizzy;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
 public class QuestionsReader {
-    
+    public static ArrayList<Question> readFromTextFile(String fileName) {
+        try {
+            ArrayList<Question> questions = new ArrayList<Question>();
+            Scanner fsc = new Scanner(new File(fileName));
+            String line; 
+            String[] parts; 
+            String questionText, answer, optA, optB, optC, optD;
+            Question question;
+            while (fsc.hasNextLine()) {
+                line = fsc.nextLine().trim();
+                parts = line.split("\t");
+                if (parts.length < 6) {
+                    questionText = parts[0];
+                    optA = parts[1];
+                    optB = parts[2];
+                    optC = parts[3]; 
+                    answer = parts[4];
+                    optD = "";
+                } else {            
+                    questionText = parts[0];
+                    optA = parts[1];
+                    optB = parts[2];
+                    optC = parts[3]; 
+                    optD = parts[4];
+                    answer = parts[5];
+                }
+                question = new Question(questionText, answer, optA, optB, optC, optD);
+                questions.add(question);
+            }
+            fsc.close();
+            return questions;
+        } catch (Exception e) {
+            System.out.println("Could not read questions in.");
+            return null;
+        }
+    }
 }
