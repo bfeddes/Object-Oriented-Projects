@@ -1,5 +1,4 @@
 package quizzy;
-
 public class Question {
 
     // Variables
@@ -45,19 +44,27 @@ public class Question {
         this.d = d;
     }
     
-    // Constructor 
+    // Default Constructor 
     public Question() {
+        question = "";
+        answer = "";
+        a = "";
+        b = "";
+        c = "";
+        d = "";
+    }
+    // Non-default Constructor 
+    public Question(String question, String answer, String a, String b, String c, String d) {
         setQuestion(question);
-        setA(answer);
+        setAnswer(answer);
+        setA(a);
         setB(b);
         setC(c);
         setD(d);
-        setAnswer(answer);
     }
-
     // Overriding the toString method 
     @Override 
     public String toString() {
-        return String.format("%s\n%s\n%s\n%s\n%s\n%s", question, a, b, c, d, answer);
+        return String.format("%s\n\t%s\n\t%s\n\t%s\n\t%s", question, a, b, c, d);
     }
 }
