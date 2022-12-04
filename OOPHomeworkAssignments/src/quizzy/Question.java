@@ -72,6 +72,7 @@ public class Question {
     // Overriding the toString method 
     @Override 
     public String toString() {
+        // I added a second string for the scenarios where there are only options A-C, not A-D, this way it avoids printing an empty space or "null"
         if (getD() != null) {
             return String.format("%s\nA.\t%s\nB.\t%s\nC.\t%s\nD.\t%s", question, a, b, c, d);
         } else {
