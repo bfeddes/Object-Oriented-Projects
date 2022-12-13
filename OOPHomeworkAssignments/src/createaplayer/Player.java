@@ -42,7 +42,6 @@ public abstract class Player {
     }
     // Abstract methods 
     public abstract String getPlayerSport();
-    public abstract String getPlayerPosition();
 
     // Default constructor (Default player build)
     public Player () {
