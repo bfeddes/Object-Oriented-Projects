@@ -1,4 +1,4 @@
-package circlecalc;
+package CircleCalc;
 import java.util.Random;
 public class CircleCalc {
 
