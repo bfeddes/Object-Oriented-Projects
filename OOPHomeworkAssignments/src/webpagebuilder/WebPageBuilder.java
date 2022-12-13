@@ -1,4 +1,4 @@
-package Assignment3;
+package webpagebuilder;
 import java.util.Scanner;
 public class WebPageBuilder 
 {

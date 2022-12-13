@@ -1,4 +1,4 @@
-package Flooring;
+package flooring;
 
 public class App {
     public static void main(String[] args) {
