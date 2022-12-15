@@ -38,16 +38,70 @@ public class PlayerFrame extends JFrame {
         JMenu mnuMyPlayer = new JMenu("MyPlayer");
         mbar.add(mnuFile);
         mbar.add(mnuMyPlayer);
-        JMenuItem mnuSave = new JMenuItem("Save MyPlayers");
-        JMenuItem mnuLoad = new JMenuItem("Load Players");
+        JMenuItem mnuSaveText = new JMenuItem("Save MyPlayers to txt");
+        JMenuItem mnuLoadText = new JMenuItem("Load Players to txt");
+        JMenuItem mnuSaveBin = new JMenuItem("Save MyPlayers to binary");
+        JMenuItem mnuLoadBin = new JMenuItem("Load Players to binary");
         JMenuItem mnuExit = new JMenuItem("Exit");
-        mnuFile.add(mnuSave);
-        mnuFile.add(mnuLoad);
+        mnuFile.add(mnuSaveText);
+        mnuFile.add(mnuLoadText);
+        mnuFile.add(mnuSaveBin);
+        mnuFile.add(mnuLoadBin);
         mnuFile.add(mnuExit);
         JMenuItem mnuCreatePlayer = new JMenuItem("Create a MyPlayer");
         JMenuItem mnuDeletePlayer = new JMenuItem("Delete a MyPlayer");
         mnuMyPlayer.add(mnuCreatePlayer);
         mnuMyPlayer.add(mnuDeletePlayer);
+
+        mnuSaveBin.addActionListener(
+            new ActionListener() {
+                public void actionPerformed (ActionEvent e) {
+                    JFileChooser fileChooser = new JFileChooser();
+                    File fileName;
+                    if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                        fileName = fileChooser.getSelectedFile();
+                        if (PlayerWriter.writeToBinary(fileName, myPlayers)) {
+                            JOptionPane.showMessageDialog(null, "Your myPlayers were saved!");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Could not save your myPlayers.\nPlease try again.");
+                        }
+                    }
+                }
+            }
+        );
+
+        mnuLoadBin.addActionListener(
+            new ActionListener() {
+                public void actionPerformed (ActionEvent e) {
+                    JFileChooser fileChooser = new JFileChooser();
+                    File fileName;
+                    if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                        fileName = fileChooser.getSelectedFile();
+                        if (PlayerReader.readFromBinary(fileName, myPlayers)) {
+                            repaint();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Could not read in MyPlayers");
+                        }
+                    }
+                }
+            }
+        );
+        mnuLoadText.addActionListener(
+            new ActionListener() {
+                public void actionPerformed (ActionEvent e) {
+                    JFileChooser fileChooser = new JFileChooser();
+                    File fileName;
+                    if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                        fileName = fileChooser.getSelectedFile();
+                        if (PlayerReader.readFromText(fileName, myPlayers)) {
+                            repaint();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Could not read in MyPlayers");
+                        }
+                    }
+                }
+            }
+        );
         mnuExit.addActionListener(
             new ActionListener() {
                 public void actionPerformed (ActionEvent e) {
@@ -59,13 +113,14 @@ public class PlayerFrame extends JFrame {
         mnuCreatePlayer.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    screenMessage.setText("<html> Please select your player's sport from the list of options below: A. Baseball</br>B. Basketball</br>C. Football </html>");
+                    screenMessage.setText("Please select your player's sport from the list of options below:\n\nA. Baseball\nB. Basketball\nC. Football");
                     repaint();
+
                 }
             }
         );
 
-        mnuSave.addActionListener(
+        mnuSaveText.addActionListener(
             new ActionListener() {
                 public void actionPerformed (ActionEvent e) {
                     JFileChooser fileChooser = new JFileChooser();
@@ -98,7 +153,7 @@ public class PlayerFrame extends JFrame {
         Container c = getContentPane();
         c.setBackground(Color.DARK_GRAY);
         c.setLayout(new BorderLayout());
-        screenMessage = new JTextArea("Welcome to MyPlayer creator!\nPlease select the sport you would like to create a player in from the options below");
+        screenMessage = new JTextArea("Welcome to MyPlayer creator!\nClick on the MyPlayer tab --> Create a MyPlayer to create a new player\nOr click on File tab and select Load Players to load in previous MyPlayer builds");
         screenMessage.setFont(new Font("Elephant", Font.PLAIN, 16));
         screenMessage.setForeground(Color.BLACK);
         screenMessage.setEditable(false);
@@ -115,6 +170,15 @@ public class PlayerFrame extends JFrame {
         panSouth.add(btnSubmit);
         panSouth.add(btnNext);
         c.add(panSouth, BorderLayout.SOUTH);
+
+        // Action Listeners
+        btnSubmit.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            }
+        );
     }
 
     // Constructor
