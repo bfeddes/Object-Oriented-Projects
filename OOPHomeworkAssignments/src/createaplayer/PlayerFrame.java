@@ -1,15 +1,16 @@
 package createaplayer;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Color;
@@ -17,6 +18,7 @@ import java.awt.Container;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 
 public class PlayerFrame extends JFrame {
@@ -26,8 +28,8 @@ public class PlayerFrame extends JFrame {
     private JButton btnSubmit;
     private JButton btnNext;
     private Player player;
-    private ArrayList myPlayers;
-    private JLabel screenMessage;
+    private ArrayList<Player> myPlayers;
+    private JTextArea screenMessage;
     // setupMenu method 
     public void setupMenu() {
         JMenuBar mbar = new JMenuBar();
@@ -54,6 +56,31 @@ public class PlayerFrame extends JFrame {
                 }
             }
         );
+        mnuCreatePlayer.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    screenMessage.setText("<html> Please select your player's sport from the list of options below: A. Baseball</br>B. Basketball</br>C. Football </html>");
+                    repaint();
+                }
+            }
+        );
+
+        mnuSave.addActionListener(
+            new ActionListener() {
+                public void actionPerformed (ActionEvent e) {
+                    JFileChooser fileChooser = new JFileChooser();
+                    File fileName;
+                    if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                        fileName = fileChooser.getSelectedFile();
+                        if (PlayerWriter.writeToText(myPlayers, fileName)) {
+                            JOptionPane.showMessageDialog(null, "Your myPlayers were saved!");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Could not save your myPlayers.\nPlease try again.");
+                        }
+                    }
+                }
+            }
+        );
         
         // Checking if there are any players to delete, if not, delete option will not be enabled 
         if (myPlayers == null) {
@@ -71,9 +98,10 @@ public class PlayerFrame extends JFrame {
         Container c = getContentPane();
         c.setBackground(Color.DARK_GRAY);
         c.setLayout(new BorderLayout());
-        screenMessage = new JLabel("<html> Welcome to MyPlayer creator!<br/>Please select the sport you would like to create a player in from the options below</html>");
+        screenMessage = new JTextArea("Welcome to MyPlayer creator!\nPlease select the sport you would like to create a player in from the options below");
         screenMessage.setFont(new Font("Elephant", Font.PLAIN, 16));
-        screenMessage.setForeground(Color.WHITE);
+        screenMessage.setForeground(Color.BLACK);
+        screenMessage.setEditable(false);
         c.add(screenMessage);
         JPanel panSouth = new JPanel();
         panSouth.setLayout(new FlowLayout());
