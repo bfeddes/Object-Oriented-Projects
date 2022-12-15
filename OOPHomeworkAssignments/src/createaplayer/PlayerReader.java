@@ -1,15 +1,17 @@
 package createaplayer;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PlayerReader {
 
-    public static ArrayList<Player> readFromText(String  fileName) {
+    public static boolean readFromText(File fileName, ArrayList<Player> myPlayers ) {
         try {
-            ArrayList<Player> myPlayers = new ArrayList<Player>();
-            Scanner fsc = new Scanner(new File(fileName));
+            myPlayers = new ArrayList<Player>();
+            Scanner fsc = new Scanner(fileName);
             String line;
             String[] parts;
             String playerSport, playerName, playerPosition; // Add more once I add more to specific types of players
@@ -43,15 +45,24 @@ public class PlayerReader {
                     myPlayers.add(footballPlayer);
                 }
             }
-            return myPlayers;
+            return true;
         } catch (Exception e) {
-            return null;
+            return false;
         }
     }
 
-    /*
-     * ADD CODE FOR Binary READER
-     */
+    // Binary reader 
+    public static boolean readFromBinary(File fileName, ArrayList<Player> myPlayers) {
+        try {
+            FileInputStream fis = new FileInputStream(fileName);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            myPlayers = (ArrayList<Player>)ois.readObject();
+            ois.close();
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
     
      /*
      * ADD CODE FOR XML READER
